@@ -1,11 +1,10 @@
 const constantes = {
-    botoesJogo: {
-        '1': 'Atacar',
-        '2': 'Defender',
-        '3': 'Esquivar',
-        '4': 'Correr',
+    STATUS_DEBUFF: { 
+        menosDefesa: 'DEFESA',
+        menosDano: 'DANO',
+        menosEsquiva: 'ESQUIVA',
     },
-
+    
     // Status do jogador
     jogador: {
         status: {

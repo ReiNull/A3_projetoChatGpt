@@ -11,7 +11,7 @@ class JogoPage extends React.Component {
     constructor(props) {
         super();
         this.geradorTextoStore = new GeradorTextoStore();
-        this.calaboucoStarterStore = new CalaboucoStarterStore(props.fasesTotais);
+        this.calaboucoStarterStore = new CalaboucoStarterStore(props.fasesTotais, this.geradorTextoStore);
 
         this.state = {
             parametrosGlobais: {
@@ -19,9 +19,8 @@ class JogoPage extends React.Component {
             },
             paraemtrosAtuais: {
                 faseAtual: 0,
-                acoesAtuais: this.calaboucoStarterStore.acoesSala(),
+                acoesAtuais: this.calaboucoStarterStore.getAcoesfase,
             },
-            logCompleto: this.geradorTextoStore.inicializador(this.calaboucoStarterStore.salaAtual.descricao),
             indexAcao: 0,
         }
 
@@ -31,22 +30,13 @@ class JogoPage extends React.Component {
 
     receberEscolha(indexAcao) {
         this.setState({ indexAcao })
-        if(this.state.paraemtrosAtuais.faseAtual >= this.state.parametrosGlobais.fasesTotais) {
-            console.log('Você escapou do Calabouço Perdido');
-            return;
-        }
-
-        const novoTexto = this.geradorTextoStore.gerarResultadoSala(this.state.logCompleto, indexAcao, this.calaboucoStarterStore.salaAtual.resultados);
+        this.calaboucoStarterStore.fezEscolhaEmFase(indexAcao);
         
-        this.setState({ logCompleto: novoTexto }, ()=>this.avancarFase());
+        this.avancarFase();
     }
 
     avancarFase() {
-        this.calaboucoStarterStore.carregarSala(this.state.paraemtrosAtuais.faseAtual);
-        const acoes = this.calaboucoStarterStore.acoesSala();
-        const novoTexto = this.geradorTextoStore.gerarTextoAleatorio(this.state.logCompleto, this.calaboucoStarterStore.salaAtual.descricao);
-
-        this.setState({ logCompleto: novoTexto, paraemtrosAtuais: { faseAtual: this.state.paraemtrosAtuais.faseAtual + 1, acoesAtuais: acoes }});
+        this.calaboucoStarterStore.avancarFase();
     }
 
     render() {
@@ -54,10 +44,10 @@ class JogoPage extends React.Component {
             <Grid container spacing={2}>
                 <Grid sx={{ color: 'white', fontSize: '70px' }} item xs={12}>LOST IN DUNGEON</Grid>
                 <Grid item xs={12}>
-                    <PainelExibeTexto texto={this.state.logCompleto} />
+                    <PainelExibeTexto texto={this.geradorTextoStore.logCompleto} />
                 </Grid>
                 <Grid container justifyContent="center" alignItems="center" item xs={12}>
-                    <PainelBotoes acoes={this.state.paraemtrosAtuais.acoesAtuais} clique={this.receberEscolha}/>
+                    <PainelBotoes acoes={this.calaboucoStarterStore.getAcoesfase} clique={this.receberEscolha}/>
                 </Grid>
             </Grid>
         );

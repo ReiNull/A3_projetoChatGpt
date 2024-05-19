@@ -6,7 +6,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <JogoPage fasesTotais={20} />
+        <JogoPage fasesTotais={5} />
       </div>
     );
   }
