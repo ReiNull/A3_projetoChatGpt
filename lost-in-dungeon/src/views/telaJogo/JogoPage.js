@@ -7,6 +7,8 @@ import PainelBotoes from '../../components/PainelBotoes';
 import GeradorTextoStore from '../../store/geradorTextoStore';
 import CalaboucoStarterStore from '../../store/calaboucoStarterStore';
 
+import constantes from '../../utils/constantes';
+
 class JogoPage extends React.Component {
     constructor(props) {
         super();
@@ -41,14 +43,17 @@ class JogoPage extends React.Component {
 
     render() {
         return (
-            <Grid container spacing={2}>
+            <Grid alignItems={"center"} spacing={3}>
+                <Grid sx={{ backgroundColor: 'black'}} justifyContent="center" alignItems={"center"} spacing={3}>
                 <Grid sx={{ color: 'white', fontSize: '70px' }} item xs={12}>LOST IN DUNGEON</Grid>
-                <Grid item xs={12}>
-                    <PainelExibeTexto texto={this.geradorTextoStore.logCompleto} />
+                    <Grid item>
+                        <PainelExibeTexto statusJogador={constantes.jogador.status} texto={this.geradorTextoStore.logCompleto} />
+                    </Grid>
+                    <Grid item sx={{marginTop: '10px'}}>
+                        <PainelBotoes acoes={this.calaboucoStarterStore.getAcoesfase} clique={this.receberEscolha}/>
+                    </Grid>
                 </Grid>
-                <Grid container justifyContent="center" alignItems="center" item xs={12}>
-                    <PainelBotoes acoes={this.calaboucoStarterStore.getAcoesfase} clique={this.receberEscolha}/>
-                </Grid>
+                
             </Grid>
         );
     }
