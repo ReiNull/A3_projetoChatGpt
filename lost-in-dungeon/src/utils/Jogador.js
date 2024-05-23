@@ -24,13 +24,14 @@ class Jogador {
     }
 
     lidarComConsequencia(consequencia) {
-        if(consequencia == 'PERDER_VIDA') {
+        if(consequencia === 'PERDER_VIDA') {
             this.receberDano(1);
-        } else if(consequencia == 'GANHAR_VIDA') {
+        } else if(consequencia === 'GANHAR_VIDA') {
             this.ganharVida(1);
+        } else if(consequencia === 'ENCONTRO_MONSTRO') {
+            this.encontrouMonstro = true;
         }
     }
-
 }
 
 export default Jogador;

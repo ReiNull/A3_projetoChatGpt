@@ -36,7 +36,7 @@ const constantes = {
             resultados: {
                 '1': 'PERDER_VIDA',
                 '2': 'GANHAR_VIDA',
-                '3': 'ENCONTRO_MONSTRO',
+                '3': 'PERDER_VIDA',
             }
         },
         { 
@@ -48,7 +48,7 @@ const constantes = {
             },
             resultados: {
                 '1': 'NADA',
-                '2': 'PERDER_VIDA',
+                '2': 'ENCONTRO_MONSTRO',
             }
         }
     ],

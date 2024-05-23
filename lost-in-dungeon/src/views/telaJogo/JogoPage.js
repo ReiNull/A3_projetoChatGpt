@@ -30,10 +30,9 @@ class JogoPage extends React.Component {
     }
 
     render() {
-        console.log(this.calaboucoStarterStore.jogador.status)
         return (
-            <Grid alignItems={"center"} spacing={3}>
-                <Grid justifyContent="center" alignItems={"center"} spacing={3}>
+            <Grid alignItems={"center"}>
+                <Grid justifyContent="center" alignItems={"center"}>
                     <Grid sx={{ color: 'white', fontSize: '70px' }} item xs={12}>LOST IN DUNGEON</Grid>
                     <Grid sx={{ color: 'white' }} item xs={12}>Salas restantes {this.calaboucoStarterStore.salasRestantes}</Grid>
                     <Grid item>
