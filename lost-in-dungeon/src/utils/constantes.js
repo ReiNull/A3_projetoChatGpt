@@ -8,7 +8,7 @@ const constantes = {
     // Status do jogador
     jogador: {
         status: {
-            vida: 10,
+            vida: 2,
             ataque: 1,
             defesa: 2,
             esquiva: 5,
@@ -21,6 +21,8 @@ const constantes = {
 
     ],
 
+    //consequencias: ['PERDER_VIDA', 'GANHAR_VIDA', 'ENCONTRO_MONSTRO', 'GANHAR_ITEM', 'NADA'],
+
     // Possíveis fases do jogo
     fases: [
         { 
@@ -32,9 +34,9 @@ const constantes = {
                 '3': 'Se Afastar do Baú',
             },
             resultados: {
-                '1': '{PERDER VIDA}',
-                '2': '{GANHAR ITEM}',
-                '3': '{ENCONTRO COM MONSTRO}',
+                '1': 'PERDER_VIDA',
+                '2': 'GANHAR_VIDA',
+                '3': 'ENCONTRO_MONSTRO',
             }
         },
         { 
@@ -45,8 +47,8 @@ const constantes = {
                 '2': 'Esperar neblina sumir',
             },
             resultados: {
-                '1': '{NADA}',
-                '2': '{ENCONTRO COM MONSTRO}',
+                '1': 'NADA',
+                '2': 'PERDER_VIDA',
             }
         }
     ],

@@ -4,8 +4,6 @@ class GeradorTextoStore {
 
     constructor() {
         this.inicializador = this.inicializador.bind(this);
-        this.gerarTextoAleatorio = this.gerarTextoAleatorio.bind(this);
-        this.gerarResultadoSala = this.gerarResultadoSala.bind(this);
         this.gerarLog = this.gerarLog.bind(this);
         this.gerouCalabouco = this.gerouCalabouco.bind(this);
     }
@@ -24,14 +22,12 @@ class GeradorTextoStore {
         this.logCompleto = novoTexto;
     }
 
-    gerarTextoAleatorio(logCompleto, salaDescricao) {
-        const novoTexto = logCompleto + ' ||' + salaDescricao + '||'; 
-        return novoTexto;
+    jogadorMorreu() {
+        return this.gerarLog(logsDefault.LOGS.jogador_morre);
     }
 
-    gerarResultadoSala(logCompleto, indexAcao, salaResultado) {
-        const novoTexto = logCompleto + ' //' + salaResultado[indexAcao] + '//'; 
-        return novoTexto;
+    jogadorEscapou() {
+        return this.gerarLog(logsDefault.LOGS.jogador_escapa_calabouco);
     }
 
     get getLogCompleto() {

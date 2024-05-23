@@ -18,15 +18,15 @@ export default function SimpleContainer(props) {
         <Grid flexGrow={1} item xs={2}>
             <Box sx={{ alignItems: 'flex-start', bgcolor: '#990000', height: '50vh', border: '2px solid brown' }}>
               <Imagem />
-              <Button fullWidth variant='contained'>STATUS</Button>
-              <Button fullWidth variant='contained'>Vida: {props.statusJogador.vida}</Button>
-              <Button fullWidth variant='contained'>Ataque: {props.statusJogador.ataque}</Button>
-              <Button fullWidth variant='contained'>Defesa: {props.statusJogador.defesa}</Button>
-              <Button fullWidth variant='contained'>Esquiva: {props.statusJogador.esquiva}</Button> 
+              <Button sx={{ fontFamily: 'VT323' }} fullWidth variant='contained'>STATUS</Button>
+              <Button sx={{ fontFamily: 'VT323' }} fullWidth variant='contained'>Vida: {props.statusJogador.vida}</Button>
+              <Button sx={{ fontFamily: 'VT323' }} fullWidth variant='contained'>Ataque: {props.statusJogador.ataque}</Button>
+              <Button sx={{ fontFamily: 'VT323' }} fullWidth variant='contained'>Defesa: {props.statusJogador.defesa}</Button>
+              <Button sx={{ fontFamily: 'VT323' }} fullWidth variant='contained'>Esquiva: {props.statusJogador.esquiva}</Button> 
             </Box>
         </Grid>
         <Grid item xs={6}>
-          <Box sx={{ bgcolor: '#cce0ff', height: '50vh', width:'100%', border: '2px solid brown' }}>
+          <Box sx={{ bgcolor: 'black', color: 'white', height: '50vh', width:'100%', border: '2px solid brown' }}>
             {props.texto}
           </Box>
         </Grid>
