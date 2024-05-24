@@ -41,14 +41,14 @@ export default function SimpleContainer(props) {
             </ListItem>
             <Divider variant="inset" component="li" />
             <ListItem>
-              <ListItemText primary={`Ataque: ${props.statusJogador.vida}`} />
+              <ListItemText primary={`Ataque: ${props.statusJogador.ataque}`} />
             </ListItem>
             <Divider variant="middle" component="li" />
             <ListItem>
-              <ListItemText primary={`Defesa: ${props.statusJogador.vida}`} />
+              <ListItemText primary={`Defesa: ${props.statusJogador.defesa}`} />
             </ListItem>
             <ListItem>
-              <ListItemText primary={`Esquiva: ${props.statusJogador.vida}`} />
+              <ListItemText primary={`Esquiva: ${props.statusJogador.esquiva}`} />
             </ListItem>
             <Divider variant="middle" component="li" />
           </List>
