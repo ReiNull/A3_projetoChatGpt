@@ -1,14 +1,17 @@
 import GeradorTextoStore from '../store/geradorTextoStore';
 import Fase from '../utils/Fase';
+import Monstro from '../utils/Monstro';
 import Jogador from '../utils/Jogador';
-
 
 class CalaboucoStarterStore {
     qtdFasesTotais = 0;
     indexfaseAtual = -1; // Necessario manter em -1 pois ao chamar o metodo (avancarFase) o index sera 0 pegando a primeira fase na lista de fases totais. [REVISAR SE POSSIVEL]
     fasesCalabouco = [];
+    qtdMonstrosTotais = 4;
+    monstrosCalabouco = [];
     geradorTextoStore = new GeradorTextoStore();
     faseAtual = new Fase();
+    monstro = new Monstro();
     jogador = new Jogador();
 
     constructor(qtdfases, geradorTextoStore) {
@@ -16,6 +19,7 @@ class CalaboucoStarterStore {
         this.geradorTextoStore = geradorTextoStore;
 
         this._gerarfases();
+        this._gerarMonstros();
     }
 
     _gerarfases() {
@@ -36,18 +40,64 @@ class CalaboucoStarterStore {
         }
     }
 
-    fezEscolhaEmFase(indexAcao) {
+    _gerarMonstros() {
         try {
-            const consequencia = this.faseAtual.resultados[indexAcao];
-            this.jogador.lidarComConsequencia(consequencia);
+            //Gera as fases do calabouço baseado na quantidade totais de fases informadas.
+            for (let index = 0; index < this.qtdMonstrosTotais; index++) {
+                const novoMonstro = new Monstro();
+                novoMonstro.carregarMonstroAleatorio();
+                this.monstrosCalabouco.push(novoMonstro);
+            }
+        } catch (error) {
+            console.log(error, 'Erro ao gerart monstros!');
+        }
+    }
+
+    combateComMonstro(indexAcao) {
+        this.monstro.receberDano(this.jogador.status.ataque);
+        this.geradorTextoStore.gerarLog('Você ataca o ' + this.monstro.descricao + '!!!');
+        console.log(this.monstro.status);
+
+        if(!this.monstro.monstroMorreu) {
+            const acaoMostro = this.monstro.realizarAcao();
+            this.jogador.receberAcaoMonstro(acaoMostro);
+            this.geradorTextoStore.gerarLog(this.monstro.descricao + ' usa ' + acaoMostro.descricao + ' em você!');
             
-            //LOG {Escolha}
-            this.geradorTextoStore.gerarLog('Você fez sua escolha, e o resultado é: ' + consequencia);
-            if(this.jogador.jogadorMorreu){
+            if(this.jogador.jogadorMorreu) {
                 this.faseAtual = null;
                 this.geradorTextoStore.jogadorMorreu();
+            }
+        } else {
+            this.geradorTextoStore.gerarLog('VOCÊ MATOU O ' + this.monstro.descricao.toUpperCase() + '!!!');
+
+            this.monstro = new Monstro();
+            this.jogador.encontrouMonstro = false;
+            this.avancarFase(); 
+        }
+    }
+
+    fezEscolhaEmFase(indexAcao) {
+        try {
+            if(this.jogador.encontrouMonstro) {
+                this.combateComMonstro(indexAcao);
+                return;
             } else {
-                this.avancarFase();
+                const consequencia = this.faseAtual.resultados[indexAcao];
+                this.jogador.lidarComConsequencia(consequencia);
+                this.geradorTextoStore.gerarLog('Você fez sua escolha, e o resultado é: ' + consequencia); //LOG {Escolha}
+
+                if(this.jogador.encontrouMonstro) {
+                    this.monstro = this.monstrosCalabouco[0];
+                    this.geradorTextoStore.gerarLog(this.monstro.descricao + ' Surgiu!');  //LOg {Monstro}
+                    return;
+                }
+                
+                if(this.jogador.jogadorMorreu){
+                    this.faseAtual = null;
+                    this.geradorTextoStore.jogadorMorreu();
+                } else {
+                    this.avancarFase();
+                }
             }
         } catch (error) {
             console.log(error, 'Erro ao fazer escolha em fase!');
