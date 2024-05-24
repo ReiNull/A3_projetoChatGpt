@@ -5,6 +5,7 @@ class MonstrosStore {
     qtdMonstrosTotais = 4;
     monstrosCalabouco = [];
     monstro = new Monstro();
+    monstroIndex = undefined;
 
     constructor(qtdMonstros) {
         //this.qtdMonstrosTotais = qtdMonstros;
@@ -44,7 +45,17 @@ class MonstrosStore {
     }
 
     chamarMonstro() {
-        this.monstro = this.monstrosCalabouco[this.getRandomNumber(this.qtdMonstrosTotais)];
+        this.monstroIndex = this.getRandomNumber(this.monstrosCalabouco.length);
+        this.monstro = this.monstrosCalabouco[this.monstroIndex];
+    }
+
+    matarMonstro() {
+        if(this.monstroIndex != undefined) {
+            this.monstro = new Monstro();
+            this.monstroIndex = undefined;
+            this.monstrosCalabouco.splice(this.monstroIndex, 1);
+        }
+        console.log(this.monstrosCalabouco);
     }
 }
 

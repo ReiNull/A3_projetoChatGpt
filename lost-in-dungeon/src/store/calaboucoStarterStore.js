@@ -39,23 +39,25 @@ class CalaboucoStarterStore {
     }
 
     combateComMonstro(indexAcao) {
-        this.monstro.receberDano(this.jogador.status.ataque);
-        this.geradorTextoStore.gerarLog('Você ataca o ' + this.monstro.descricao + '!!!');
-        console.log(this.monstro.status);
+        const { monstro } = this.monstrosStore;
 
-        if(!this.monstro.monstroMorreu) {
-            const acaoMostro = this.monstro.realizarAcao();
+        monstro.receberDano(this.jogador.status.ataque);
+        this.geradorTextoStore.gerarLog('Você ataca o ' + monstro.descricao + '!!!');
+        console.log(monstro.status);
+
+        if(!monstro.monstroMorreu) {
+            const acaoMostro = monstro.realizarAcao();
             this.jogador.receberAcaoMonstro(acaoMostro);
-            this.geradorTextoStore.gerarLog(this.monstro.descricao + ' usa ' + acaoMostro.descricao + ' em você!');
+            this.geradorTextoStore.gerarLog(monstro.descricao + ' usa ' + acaoMostro.descricao + ' em você!');
             
             if(this.jogador.jogadorMorreu) {
                 this.faseAtual = null;
                 this.geradorTextoStore.jogadorMorreu();
             }
         } else {
-            this.geradorTextoStore.gerarLog('VOCÊ MATOU O ' + this.monstro.descricao.toUpperCase() + '!!!');
+            this.geradorTextoStore.gerarLog('VOCÊ MATOU O ' + monstro.descricao.toUpperCase() + '!!!');
 
-            this.monstro = new Monstro();
+            this.monstrosStore.matarMonstro();
             this.jogador.encontrouMonstro = false;
             this.avancarFase(); 
         }
