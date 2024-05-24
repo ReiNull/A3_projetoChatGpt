@@ -1,11 +1,16 @@
 import * as React from 'react';
-import { Box, Grid, Button } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 
 import Imagem from './Imagem';
+import Vida from '../img/coracao.png';
+import Defesa from '../img/escudo.png';
+import Esquiva from '../img/botaAsas.png';
+import Ataque from '../img/espada.png';
+import Icone from './IconesStatus';
 
 // function createMarkup() {
 //   return {__html: '<font color="red">First &middot; Second</font>'};
@@ -14,6 +19,7 @@ import Imagem from './Imagem';
 // function MyComponent() {
 //   return <div dangerouslySetInnerHTML={createMarkup()} />;
 // }
+
 const style = {
   py: 0,
   width: '100%',
@@ -37,18 +43,22 @@ export default function SimpleContainer(props) {
             </ListItem>
             <Divider component="li" />
             <ListItem>
+              <Icone src={Vida} />
               <ListItemText primary={`Vida: ${props.statusJogador.vida}`}/>
             </ListItem>
             <Divider component="li" />
             <ListItem>
+              <Icone src={Ataque} />
               <ListItemText primary={`Ataque: ${props.statusJogador.ataque}`} />
             </ListItem>
             <Divider component="li" />
             <ListItem>
+              <Icone src={Defesa} />
               <ListItemText primary={`Defesa: ${props.statusJogador.defesa}`} />
             </ListItem>
             <Divider component="li" />
             <ListItem>
+              <Icone src={Esquiva} />
               <ListItemText primary={`Esquiva: ${props.statusJogador.esquiva}`} />
             </ListItem>
             <Divider component="li" />
@@ -70,6 +80,7 @@ export default function SimpleContainer(props) {
         </Grid>
 
         <Grid item sx={style} marginLeft={5}>
+          <Imagem />
           <List>
             <ListItem>
               <ListItemText primary="STATUS" />
