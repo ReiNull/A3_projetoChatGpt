@@ -33,8 +33,8 @@ class JogoPage extends React.Component {
         return (
             <Grid alignItems={"center"}>
                 <Grid justifyContent="center" alignItems={"center"}>
-                    <Grid sx={{ color: 'white', fontSize: '70px' }} item xs={12}>LOST IN DUNGEON</Grid>
-                    <Grid sx={{ color: 'white', fontSize: '25px' }} item xs={12}>Salas restantes {this.calaboucoStarterStore.salasRestantes}</Grid>
+                    <Grid sx={{ color: 'red', fontSize: '70px' }} item xs={12}>LOST IN DUNGEON</Grid>
+                    <Grid sx={{ color: 'red', fontSize: '25px' }} item xs={12}>Salas restantes {this.calaboucoStarterStore.salasRestantes}</Grid>
                     <Grid item sx={{marginTop: '10px'}}>
                         <PainelExibeTexto statusJogador={this.calaboucoStarterStore.jogador.status} texto={this.geradorTextoStore.logCompleto} />
                     </Grid>
