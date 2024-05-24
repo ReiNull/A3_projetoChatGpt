@@ -7,6 +7,8 @@ class Monstro {
     caracteristicas = '**NULL**';
     acoes = '**NULL**';
 
+    monstroMorreu = false;
+
     constructor() {
         this.getRandomNumber = this.getRandomNumber.bind(this);
         this.getRandomCaracteristica = this.getRandomCaracteristica.bind(this);
@@ -53,6 +55,11 @@ class Monstro {
 
     realizarAcao() {
         return this.acoes[this.getRandomAcao()];
+    }
+
+    receberDano(dano) {
+        this.status.vida -= dano
+        this.monstroMorreu = this.status.vida <= 0;
     }
 }
 

@@ -8,10 +8,10 @@ const constantes = {
     // Status do jogador
     jogador: {
         status: {
-            vida: 2,
-            ataque: 1,
-            defesa: 2,
-            esquiva: 5,
+            vida: 30,
+            ataque: 20,
+            defesa: 10,
+            esquiva: 15,
         }
         //TO DO: inventario que o jogador adquire no calabouço
     },

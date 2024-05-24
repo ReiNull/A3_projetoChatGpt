@@ -48,27 +48,38 @@ class CalaboucoStarterStore {
                 novoMonstro.carregarMonstroAleatorio();
                 this.monstrosCalabouco.push(novoMonstro);
             }
-            console.log(this.monstrosCalabouco);
         } catch (error) {
             console.log(error, 'Erro ao gerart monstros!');
         }
     }
 
-    combateComMonstro() {
-        const acaoMostro = this.monstro.realizarAcao();
-        this.jogador.receberAcaoMonstro(acaoMostro);
+    combateComMonstro(indexAcao) {
+        this.monstro.receberDano(this.jogador.status.ataque);
+        this.geradorTextoStore.gerarLog('Você ataca o ' + this.monstro.descricao + '!!!');
+        console.log(this.monstro.status);
 
-        this.geradorTextoStore.gerarLog(this.monstro.descricao + ' usa ' + acaoMostro.descricao + ' em você!');
-        if(this.jogador.jogadorMorreu) {
-            this.faseAtual = null;
-            this.geradorTextoStore.jogadorMorreu();
+        if(!this.monstro.monstroMorreu) {
+            const acaoMostro = this.monstro.realizarAcao();
+            this.jogador.receberAcaoMonstro(acaoMostro);
+            this.geradorTextoStore.gerarLog(this.monstro.descricao + ' usa ' + acaoMostro.descricao + ' em você!');
+            
+            if(this.jogador.jogadorMorreu) {
+                this.faseAtual = null;
+                this.geradorTextoStore.jogadorMorreu();
+            }
+        } else {
+            this.geradorTextoStore.gerarLog('VOCÊ MATOU O ' + this.monstro.descricao.toUpperCase() + '!!!');
+
+            this.monstro = new Monstro();
+            this.jogador.encontrouMonstro = false;
+            this.avancarFase(); 
         }
     }
 
     fezEscolhaEmFase(indexAcao) {
         try {
             if(this.jogador.encontrouMonstro) {
-                this.combateComMonstro();
+                this.combateComMonstro(indexAcao);
                 return;
             } else {
                 const consequencia = this.faseAtual.resultados[indexAcao];
