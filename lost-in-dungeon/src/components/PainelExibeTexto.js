@@ -47,6 +47,7 @@ export default function SimpleContainer(props) {
             <ListItem>
               <ListItemText primary={`Defesa: ${props.statusJogador.defesa}`} />
             </ListItem>
+            <Divider variant="middle" component="li" />
             <ListItem>
               <ListItemText primary={`Esquiva: ${props.statusJogador.esquiva}`} />
             </ListItem>
@@ -85,6 +86,7 @@ export default function SimpleContainer(props) {
             <ListItem>
               <ListItemText primary={`Defesa: ${props.statusJogador.vida}`} />
             </ListItem>
+            <Divider variant="middle" component="li" />
             <ListItem>
               <ListItemText primary={`Esquiva: ${props.statusJogador.vida}`} />
             </ListItem>
