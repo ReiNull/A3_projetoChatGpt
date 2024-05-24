@@ -80,6 +80,7 @@ export default function SimpleContainer(props) {
         </Grid>
 
         <Grid item sx={style} marginLeft={5}>
+          <Imagem />
           <List>
             <ListItem>
               <ListItemText primary="STATUS" />
