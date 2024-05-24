@@ -1,4 +1,5 @@
-import GeradorTextoStore from '../store/geradorTextoStore';
+import GeradorTextoStore from './geradorTextoStore';
+import MonstrosStore from './monstrosStore';
 import Fase from '../utils/Fase';
 import Monstro from '../utils/Monstro';
 import Jogador from '../utils/Jogador';
@@ -7,11 +8,9 @@ class CalaboucoStarterStore {
     qtdFasesTotais = 0;
     indexfaseAtual = -1; // Necessario manter em -1 pois ao chamar o metodo (avancarFase) o index sera 0 pegando a primeira fase na lista de fases totais. [REVISAR SE POSSIVEL]
     fasesCalabouco = [];
-    qtdMonstrosTotais = 4;
-    monstrosCalabouco = [];
     geradorTextoStore = new GeradorTextoStore();
+    monstrosStore = new MonstrosStore();
     faseAtual = new Fase();
-    monstro = new Monstro();
     jogador = new Jogador();
 
     constructor(qtdfases, geradorTextoStore) {
@@ -19,7 +18,6 @@ class CalaboucoStarterStore {
         this.geradorTextoStore = geradorTextoStore;
 
         this._gerarfases();
-        this._gerarMonstros();
     }
 
     _gerarfases() {
@@ -37,19 +35,6 @@ class CalaboucoStarterStore {
             this.avancarFase();
         } catch (error) {
             console.log(error, 'Erro ao montar calabouço!');
-        }
-    }
-
-    _gerarMonstros() {
-        try {
-            //Gera as fases do calabouço baseado na quantidade totais de fases informadas.
-            for (let index = 0; index < this.qtdMonstrosTotais; index++) {
-                const novoMonstro = new Monstro();
-                novoMonstro.carregarMonstroAleatorio();
-                this.monstrosCalabouco.push(novoMonstro);
-            }
-        } catch (error) {
-            console.log(error, 'Erro ao gerart monstros!');
         }
     }
 
@@ -87,8 +72,8 @@ class CalaboucoStarterStore {
                 this.geradorTextoStore.gerarLog('Você fez sua escolha, e o resultado é: ' + consequencia); //LOG {Escolha}
 
                 if(this.jogador.encontrouMonstro) {
-                    this.monstro = this.monstrosCalabouco[0];
-                    this.geradorTextoStore.gerarLog(this.monstro.descricao + ' Surgiu!');  //LOg {Monstro}
+                    this.monstrosStore.chamarMonstro();
+                    this.geradorTextoStore.gerarLog(this.monstrosStore.monstro.descricao + ' Surgiu!');  //LOg {Monstro}
                     return;
                 }
                 
