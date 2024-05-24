@@ -33,7 +33,8 @@ class MonstrosStore {
                     monstroNovo.descricaoChatGpt  = constantes.monstros[monstroAleatorio].descricaoChatGpt;
                     monstroNovo.caracteristicas   = constantes.monstros[monstroAleatorio].caracteristicas[this.getRandomCaracteristica(monstroAleatorio)];
                     monstroNovo.acoes             = constantes.monstros[monstroAleatorio].acoesMonstro;
-                    
+                    monstroNovo.nasceu            = true;
+
                     this.monstrosCalabouco.push(monstroNovo);
                 } else {
                     console.log('Index está além do que existe disponível para monstros');
