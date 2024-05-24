@@ -5,6 +5,7 @@ class Monstro {
     caracteristicas = '**NULL**';
     acoes = '**NULL**';
 
+    nasceu = false;
     monstroMorreu = false;
 
     constructor() {
