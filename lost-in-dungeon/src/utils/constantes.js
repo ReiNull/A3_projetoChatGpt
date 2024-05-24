@@ -66,8 +66,8 @@ const constantes = {
             caracteristicas: ['Raivoso', 'Triste', 'Cansado', 'Louco'],
             descricaoChatGpt: 'Me descreva um lobisomem :caracteristica, no máximo 20 palavras, texto corrido',
             acoesMonstro: [
-                { descricao: 'Mordida', dano: 5, statusDebuff: '', descricaoChatGpt: 'Descreva um lobisomem me mordendo' },
-                { descricao: 'Rosnado', dano: 0, statusDebuff: 'jogadorStatus.ataque -= 1', descricaoChatGpt: 'Descreva um lobisomem rosnando para mim'}
+                { descricao: 'Mordida', dano: 5, statusDebuff: null, descricaoChatGpt: 'Descreva um lobisomem me mordendo' },
+                { descricao: 'Rosnado', dano: 0, statusDebuff: { ataque: 2, esquiva: 5 }, descricaoChatGpt: 'Descreva um lobisomem rosnando para mim'}
             ],
         },
         { 
@@ -81,7 +81,7 @@ const constantes = {
             caracteristicas: ['Raivoso', 'Triste', 'Cansado', 'Louco'],
             descricaoChatGpt: 'Me descreva um Rato :caracteristica, no máximo 20 palavras, texto corrido',
             acoesMonstro: [
-                { descricao: 'Mordida', dano: 1, statusDebuff: '', descricaoChatGpt: 'Descreva um Rato me mordendo' },
+                { descricao: 'Mordida', dano: 1, statusDebuff: null, descricaoChatGpt: 'Descreva um Rato me mordendo' },
             ],
         }
     ],

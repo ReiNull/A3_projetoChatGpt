@@ -32,6 +32,16 @@ class Jogador {
             this.encontrouMonstro = true;
         }
     }
+
+    receberAcaoMonstro(acaoMostro) {
+        this.status.vida -= acaoMostro.dano;
+        if(acaoMostro.statusDebuff) {
+            this.status.ataque -= acaoMostro.statusDebuff['ataque'] ? acaoMostro.statusDebuff['ataque'] : 0;
+            this.status.defesa -= acaoMostro.statusDebuff['defesa'] ? acaoMostro.statusDebuff['defesa'] : 0;
+            this.status.esquiva -= acaoMostro.statusDebuff['esquiva'] ? acaoMostro.statusDebuff['esquiva'] : 0;
+        }
+        this.jogadorMorreu = this.status.vida <= 0;
+    }
 }
 
 export default Jogador;

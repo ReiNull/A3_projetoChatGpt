@@ -22,6 +22,10 @@ class Monstro {
         return Math.floor(Math.random() * constantes.monstros[indexMonstro].caracteristicas.length);
     }
 
+    getRandomAcao() {
+        return Math.floor(Math.random() * this.acoes.length);
+    }
+
     // carregarFase(index) {
     //     if(index < constantes.fases.length) {
     //         this.descricao = constantes.fases[index].descricao;
@@ -45,6 +49,10 @@ class Monstro {
         } else {
             console.log('Index está além do que existe disponível para monstros');
         }
+    }
+
+    realizarAcao() {
+        return this.acoes[this.getRandomAcao()];
     }
 }
 

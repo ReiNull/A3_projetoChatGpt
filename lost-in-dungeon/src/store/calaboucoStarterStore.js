@@ -55,7 +55,14 @@ class CalaboucoStarterStore {
     }
 
     combateComMonstro() {
-        this.geradorTextoStore.gerarLog(this.monstro.descricao + ' usa ' + this.monstro.acoes[0].descricao + ' em você!');
+        const acaoMostro = this.monstro.realizarAcao();
+        this.jogador.receberAcaoMonstro(acaoMostro);
+
+        this.geradorTextoStore.gerarLog(this.monstro.descricao + ' usa ' + acaoMostro.descricao + ' em você!');
+        if(this.jogador.jogadorMorreu) {
+            this.faseAtual = null;
+            this.geradorTextoStore.jogadorMorreu();
+        }
     }
 
     fezEscolhaEmFase(indexAcao) {
@@ -66,13 +73,11 @@ class CalaboucoStarterStore {
             } else {
                 const consequencia = this.faseAtual.resultados[indexAcao];
                 this.jogador.lidarComConsequencia(consequencia);
-
-                //LOG {Escolha}
-                this.geradorTextoStore.gerarLog('Você fez sua escolha, e o resultado é: ' + consequencia);
+                this.geradorTextoStore.gerarLog('Você fez sua escolha, e o resultado é: ' + consequencia); //LOG {Escolha}
 
                 if(this.jogador.encontrouMonstro) {
                     this.monstro = this.monstrosCalabouco[0];
-                    this.geradorTextoStore.gerarLog(this.monstro.descricao + ' Surgiu!');
+                    this.geradorTextoStore.gerarLog(this.monstro.descricao + ' Surgiu!');  //LOg {Monstro}
                     return;
                 }
                 
