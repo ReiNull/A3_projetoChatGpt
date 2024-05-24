@@ -39,19 +39,19 @@ export default function SimpleContainer(props) {
             <ListItem>
               <ListItemText primary={`Vida: ${props.statusJogador.vida}`}/>
             </ListItem>
-            <Divider variant="inset" component="li" />
+            <Divider component="li" />
             <ListItem>
               <ListItemText primary={`Ataque: ${props.statusJogador.ataque}`} />
             </ListItem>
-            <Divider variant="middle" component="li" />
+            <Divider component="li" />
             <ListItem>
               <ListItemText primary={`Defesa: ${props.statusJogador.defesa}`} />
             </ListItem>
-            <Divider variant="middle" component="li" />
+            <Divider component="li" />
             <ListItem>
               <ListItemText primary={`Esquiva: ${props.statusJogador.esquiva}`} />
             </ListItem>
-            <Divider variant="middle" component="li" />
+            <Divider component="li" />
           </List>
         </Grid>
         {/* <Grid flexGrow={1} item xs={2}>
@@ -78,19 +78,19 @@ export default function SimpleContainer(props) {
             <ListItem>
               <ListItemText primary={`Vida: ${props.statusJogador.vida}`}/>
             </ListItem>
-            <Divider variant="inset" component="li" />
+            <Divider component="li" />
             <ListItem>
               <ListItemText primary={`Ataque: ${props.statusJogador.vida}`} />
             </ListItem>
-            <Divider variant="middle" component="li" />
+            <Divider component="li" />
             <ListItem>
               <ListItemText primary={`Defesa: ${props.statusJogador.vida}`} />
             </ListItem>
-            <Divider variant="middle" component="li" />
+            <Divider component="li" />
             <ListItem>
               <ListItemText primary={`Esquiva: ${props.statusJogador.vida}`} />
             </ListItem>
-            <Divider variant="middle" component="li" />
+            <Divider component="li" />
           </List>
         </Grid>
 
