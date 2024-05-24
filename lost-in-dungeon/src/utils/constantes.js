@@ -85,6 +85,23 @@ const constantes = {
             ],
         }
     ],
+
+    monstrosEspeciais: [
+        { 
+            status: {
+                vida: 999,
+                ataque: 999,
+                defesa: 999,
+                esquiva: 999,
+            },
+            descricao: 'Morte' ,
+            caracteristicas: ['Aterrorizante'],
+            descricaoChatGpt: 'Me descreva um ceifador emcapuzado :caracteristica, no máximo 20 palavras, texto corrido',
+            acoesMonstro: [
+                { descricao: 'Matar', dano: 999, statusDebuff: null, descricaoChatGpt: 'Descreva um ceifador colhendo almas' },
+            ],
+        },
+    ]
     
 }
 
