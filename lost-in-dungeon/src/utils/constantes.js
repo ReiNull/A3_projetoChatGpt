@@ -3,6 +3,8 @@ import EspreitadorVinhas from '../img/monstroPlanta.png';
 import Rato from '../img/rato.png';
 import Vampiro from '../img/vampiro.png';
 import Morte from '../img/morte.png';
+import Coelho from '../img/coelho.png';
+
 
 const constantes = {
     STATUS_DEBUFF: { 
