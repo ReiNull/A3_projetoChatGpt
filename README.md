@@ -18,3 +18,6 @@ https://kinsta.com/blog/react-components-library/
 
 A Biblioteca que eu escolhi:
 https://mui.com/components/
+
+Imagens geradas a partir de I.A.:
+https://openart.ai/create
