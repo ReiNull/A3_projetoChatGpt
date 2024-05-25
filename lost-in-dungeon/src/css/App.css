@@ -38,9 +38,10 @@
 }
 
 body {
-  background-color: rgb(19, 4, 43);
-  /* color: aqua; */
-  /* color: red; */
+  background-image: url('../img/fundoPrincipal.png');
+  background-size: cover;
+  background-position: center; /* Centraliza a imagem no container */
+  background-repeat: no-repeat; 
 }
 
 .maldosa {

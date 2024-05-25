@@ -28,7 +28,7 @@ const style = {
   //maxHeight: 400,
   borderRadius: 2,
   border: '2px solid red',
-  backgroundColor: 'black',
+  backgroundColor: 'rgba(3, 3, 3, 0.72)',
   color: 'aqua',
 };
 
@@ -74,7 +74,7 @@ export default function SimpleContainer(props) {
             </Box>
         </Grid> */}
         <Grid item xs={6}>
-          <Box sx={{ fontSize: '23px', bgcolor: 'black', color: 'white', height: '50vh', width:'100%', borderRadius: 2, border: '2px solid red' }}>
+          <Box sx={{ fontSize: '23px', bgcolor: 'rgba(3, 3, 3, 0.72)', color: 'white', height: '50vh', width:'100%', borderRadius: 2, border: '2px solid red' }}>
             {props.texto}
           </Box>
         </Grid>
