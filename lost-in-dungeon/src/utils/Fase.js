@@ -18,10 +18,12 @@ class Fase {
 
     carregarFase(index) {
         if(index < constantes.fases.length) {
-            this.descricao = constantes.fases[index].descricao;
-            this.descricaoChatGpt = constantes.fases[index].descricaoChatGpt;
-            this.escolhas = constantes.fases[index].escolhas;
-            this.resultados = constantes.fases[index].resultados;
+            const referenciaFase = structuredClone(constantes.fases[index]);
+
+            this.descricao = referenciaFase.descricao;
+            this.descricaoChatGpt = referenciaFase.descricaoChatGpt;
+            this.escolhas = referenciaFase.escolhas;
+            this.resultados = referenciaFase.resultados;
         } else {
             console.log('Index está além do que existe disponível para fases');
         }
@@ -31,10 +33,12 @@ class Fase {
         const faseAleatoria = this.getRandomNumber();
 
         if(faseAleatoria < constantes.fases.length) {
-            this.descricao = constantes.fases[faseAleatoria].descricao;
-            this.descricaoChatGpt = constantes.fases[faseAleatoria].descricaoChatGpt;
-            this.escolhas = constantes.fases[faseAleatoria].escolhas;
-            this.resultados = constantes.fases[faseAleatoria].resultados;
+            const referenciaFase = structuredClone(constantes.fases[faseAleatoria]);
+
+            this.descricao = referenciaFase.descricao;
+            this.descricaoChatGpt = referenciaFase.descricaoChatGpt;
+            this.escolhas = referenciaFase.escolhas;
+            this.resultados = referenciaFase.resultados;
         } else {
             console.log('Index está além do que existe disponível para fases');
         }

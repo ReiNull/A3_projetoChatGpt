@@ -36,7 +36,6 @@ class MonstrosStore {
             this.monstro = new Monstro();
             this.monstroIndex = undefined;
         }
-        console.log(this.monstrosCalabouco);
     }
 
     get getMonstro() {

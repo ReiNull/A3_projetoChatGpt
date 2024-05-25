@@ -23,12 +23,14 @@ class Monstro {
 
     nascer(indexMonstro) {
         if(indexMonstro < constantes.monstros.length) {
-            this.src               = constantes.monstros[indexMonstro].src;
-            this.status            = constantes.monstros[indexMonstro].status;
-            this.descricao         = constantes.monstros[indexMonstro].descricao;
-            this.descricaoChatGpt  = constantes.monstros[indexMonstro].descricaoChatGpt;
-            this.caracteristicas   = constantes.monstros[indexMonstro].caracteristicas[this.getRandomCaracteristica(indexMonstro)];
-            this.acoes             = constantes.monstros[indexMonstro].acoesMonstro;
+            const referenciaMonstro = structuredClone(constantes.monstros[indexMonstro]);
+
+            this.src               = referenciaMonstro.src;
+            this.status            = referenciaMonstro.status;
+            this.descricao         = referenciaMonstro.descricao;
+            this.descricaoChatGpt  = referenciaMonstro.descricaoChatGpt;
+            this.caracteristicas   = referenciaMonstro.caracteristicas[this.getRandomCaracteristica(indexMonstro)];
+            this.acoes             = referenciaMonstro.acoesMonstro;
             this.nasceu            = true;
         } else {
             console.log('Index está além do que existe disponível para monstros');
