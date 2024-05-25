@@ -12,18 +12,18 @@ export default function NestedGrid(props) {
                 <>
                     <Grid justifyContent="center" alignItems="center" container item spacing={3}>
                         <Grid item xs={5}>
-                            <Button onClick={()=>props.clique(1)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px' }}></Button>
+                            <Button onClick={()=>props.clique(1)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px' }}>ATAQUE</Button>
                         </Grid>
                         <Grid item xs={5}>
-                            <Button onClick={()=>props.clique(2)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px' }}></Button>
+                            <Button onClick={()=>props.clique(2)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px' }}>DEFESA</Button>
                         </Grid>
                     </Grid>
                     <Grid justifyContent="center" alignItems="center" container item spacing={3}>
                         <Grid item xs={5}>
-                            <Button onClick={()=>props.clique(2)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px' }}></Button>
+                            <Button onClick={()=>props.clique(2)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px' }}>ESQUIVA</Button>
                         </Grid>
                         <Grid item xs={5}>
-                            <Button onClick={()=>props.clique(4)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px' }}></Button>
+                            <Button onClick={()=>props.clique(4)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px' }}>FUGIR</Button>
                         </Grid>
                     </Grid>
                 </>
