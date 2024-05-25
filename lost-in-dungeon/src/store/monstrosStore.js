@@ -32,11 +32,10 @@ class MonstrosStore {
 
     matarMonstro() {
         if(this.monstroIndex != undefined) {
+            this.monstrosCalabouco.splice(this.monstroIndex, 1);
             this.monstro = new Monstro();
             this.monstroIndex = undefined;
-            this.monstrosCalabouco.splice(this.monstroIndex, 1);
         }
-        console.log(this.monstrosCalabouco);
     }
 
     get getMonstro() {
