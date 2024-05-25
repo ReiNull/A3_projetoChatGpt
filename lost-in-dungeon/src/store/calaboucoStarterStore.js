@@ -13,10 +13,12 @@ class CalaboucoStarterStore {
     faseAtual = new Fase();
     jogador = new Jogador();
 
-    constructor(qtdfases, geradorTextoStore) {
+    constructor(qtdfases, geradorTextoStore, monstrosStore) {
         this.qtdFasesTotais = qtdfases;
         this.geradorTextoStore = geradorTextoStore;
+        this.monstrosStore = monstrosStore;
 
+        this.monstrosStore._gerarMonstros();
         this._gerarfases();
     }
 

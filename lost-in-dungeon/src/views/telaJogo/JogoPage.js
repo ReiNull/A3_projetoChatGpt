@@ -7,6 +7,7 @@ import PainelBotoes from '../../components/PainelBotoes';
 
 import GeradorTextoStore from '../../store/geradorTextoStore';
 import CalaboucoStarterStore from '../../store/calaboucoStarterStore';
+import MonstrosStore from '../../store/monstrosStore';
 
 import '../../css/jogoPage.css';
 
@@ -14,7 +15,8 @@ class JogoPage extends React.Component {
     constructor(props) {
         super();
         this.geradorTextoStore = new GeradorTextoStore();
-        this.calaboucoStarterStore = new CalaboucoStarterStore(props.fasesTotais, this.geradorTextoStore);
+        this.monstrosStore = new MonstrosStore();
+        this.calaboucoStarterStore = new CalaboucoStarterStore(props.fasesTotais, this.geradorTextoStore, this.monstrosStore);
 
         this.receberEscolha = this.receberEscolha.bind(this);
         this.avancarFase = this.avancarFase.bind(this);
