@@ -23,6 +23,7 @@ class Monstro {
 
     nascer(indexMonstro) {
         if(indexMonstro < constantes.monstros.length) {
+            this.src               = constantes.monstros[indexMonstro].src;
             this.status            = constantes.monstros[indexMonstro].status;
             this.descricao         = constantes.monstros[indexMonstro].descricao;
             this.descricaoChatGpt  = constantes.monstros[indexMonstro].descricaoChatGpt;

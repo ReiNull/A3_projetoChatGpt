@@ -80,26 +80,26 @@ export default function SimpleContainer(props) {
         </Grid>
 
         <Grid item sx={style} marginLeft={5}>
-          <Imagem />
+          <Imagem src={props.statusMonstro.src} />
           <List>
             <ListItem>
               <ListItemText primary="STATUS" />
             </ListItem>
             <Divider component="li" />
             <ListItem>
-              <ListItemText primary={`Vida: ${props.statusJogador.vida}`}/>
+              <ListItemText primary={`Vida: ${props.statusMonstro.status.vida}`}/>
             </ListItem>
             <Divider component="li" />
             <ListItem>
-              <ListItemText primary={`Ataque: ${props.statusJogador.vida}`} />
+              <ListItemText primary={`Ataque: ${props.statusMonstro.status.ataque}`} />
             </ListItem>
             <Divider component="li" />
             <ListItem>
-              <ListItemText primary={`Defesa: ${props.statusJogador.vida}`} />
+              <ListItemText primary={`Defesa: ${props.statusMonstro.status.defesa}`} />
             </ListItem>
             <Divider component="li" />
             <ListItem>
-              <ListItemText primary={`Esquiva: ${props.statusJogador.vida}`} />
+              <ListItemText primary={`Esquiva: ${props.statusMonstro.status.esquiva}`} />
             </ListItem>
             <Divider component="li" />
           </List>

@@ -1,14 +1,13 @@
 import * as React from 'react';
-import lobisomem from '../img/lobisomem.png';
 
-export default function CustomImageList() {
+export default function CustomImageList(props) {
   return (
-        <img
-            width={'100%'}
-            height={'270vh'}
-            alt={'Jogador'}
-            src={lobisomem}
-            loading="lazy"
-        />
-        );
+    <img
+        width={'100%'}
+        height={'270vh'}
+        alt={'Jogador'}
+        src={props.src}
+        loading="lazy"
+    />
+  );
 }

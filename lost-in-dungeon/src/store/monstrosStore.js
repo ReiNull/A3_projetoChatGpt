@@ -38,6 +38,10 @@ class MonstrosStore {
         }
         console.log(this.monstrosCalabouco);
     }
+
+    get getMonstro() {
+        return this.monstro;
+    } 
 }
 
 export default MonstrosStore;
