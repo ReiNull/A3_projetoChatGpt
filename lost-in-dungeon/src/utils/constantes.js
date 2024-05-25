@@ -1,3 +1,8 @@
+import Lobisomem from '../img/lobisomem.png';
+import EspreitadorVinhas from '../img/monstroPlanta.png';
+import Rato from '../img/rato.png';
+import Vampiro from '../img/vampiro.png';
+
 const constantes = {
     STATUS_DEBUFF: { 
         menosDefesa: 'DEFESA',
@@ -65,6 +70,7 @@ const constantes = {
             descricao: 'Lobisomem' ,
             caracteristicas: ['Raivoso', 'Triste', 'Cansado', 'Louco'],
             descricaoChatGpt: 'Me descreva um lobisomem :caracteristica, no máximo 20 palavras, texto corrido',
+            src: Lobisomem,
             acoesMonstro: [
                 { descricao: 'Mordida', dano: 5, statusDebuff: null, descricaoChatGpt: 'Descreva um lobisomem me mordendo' },
                 { descricao: 'Rosnado', dano: 0, statusDebuff: { ataque: 2, esquiva: 5 }, descricaoChatGpt: 'Descreva um lobisomem rosnando para mim'}
@@ -80,6 +86,7 @@ const constantes = {
             descricao: 'Rato' ,
             caracteristicas: ['Raivoso', 'Triste', 'Cansado', 'Louco'],
             descricaoChatGpt: 'Me descreva um Rato :caracteristica, no máximo 20 palavras, texto corrido',
+            src: Rato,
             acoesMonstro: [
                 { descricao: 'Mordida', dano: 1, statusDebuff: null, descricaoChatGpt: 'Descreva um Rato me mordendo' },
             ],

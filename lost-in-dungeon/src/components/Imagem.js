@@ -1,5 +1,5 @@
 import * as React from 'react';
-import lobisomem from '../img/lobisomen.png';
+import lobisomem from '../img/lobisomem.png';
 
 export default function CustomImageList() {
   return (
