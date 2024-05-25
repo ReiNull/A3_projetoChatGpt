@@ -44,22 +44,22 @@ export default function SimpleContainer(props) {
             <Divider component="li" />
             <ListItem>
               <Icone src={Vida} />
-              <ListItemText primary={`Vida: ${props.statusJogador.vida}`}/>
+              <ListItemText primary={`Vida: ${props.statusJogador.status.vida}`}/>
             </ListItem>
             <Divider component="li" />
             <ListItem>
               <Icone src={Ataque} />
-              <ListItemText primary={`Ataque: ${props.statusJogador.ataque}`} />
+              <ListItemText primary={`Ataque: ${props.statusJogador.status.ataque}`} />
             </ListItem>
             <Divider component="li" />
             <ListItem>
               <Icone src={Defesa} />
-              <ListItemText primary={`Defesa: ${props.statusJogador.defesa}`} />
+              <ListItemText primary={`Defesa: ${props.statusJogador.status.defesa}`} />
             </ListItem>
             <Divider component="li" />
             <ListItem>
               <Icone src={Esquiva} />
-              <ListItemText primary={`Esquiva: ${props.statusJogador.esquiva}`} />
+              <ListItemText primary={`Esquiva: ${props.statusJogador.status.esquiva}`} />
             </ListItem>
             <Divider component="li" />
           </List>
@@ -80,29 +80,40 @@ export default function SimpleContainer(props) {
         </Grid>
 
         <Grid item sx={style} marginLeft={5}>
-          <Imagem src={props.statusMonstro.src} />
-          <List>
-            <ListItem>
-              <ListItemText primary="STATUS" />
-            </ListItem>
-            <Divider component="li" />
-            <ListItem>
-              <ListItemText primary={`Vida: ${props.statusMonstro.status.vida}`}/>
-            </ListItem>
-            <Divider component="li" />
-            <ListItem>
-              <ListItemText primary={`Ataque: ${props.statusMonstro.status.ataque}`} />
-            </ListItem>
-            <Divider component="li" />
-            <ListItem>
-              <ListItemText primary={`Defesa: ${props.statusMonstro.status.defesa}`} />
-            </ListItem>
-            <Divider component="li" />
-            <ListItem>
-              <ListItemText primary={`Esquiva: ${props.statusMonstro.status.esquiva}`} />
-            </ListItem>
-            <Divider component="li" />
-          </List>
+          { props.statusJogador.encontrouMonstro ? (
+            <>
+            <Imagem src={props.statusMonstro.src} />
+            <List>
+              <ListItem>
+                <ListItemText primary="STATUS" />
+              </ListItem>
+              <Divider component="li" />
+              <ListItem>
+                <ListItemText primary={`Vida: ${props.statusMonstro.status.vida}`}/>
+              </ListItem>
+              <Divider component="li" />
+              <ListItem>
+                <ListItemText primary={`Ataque: ${props.statusMonstro.status.ataque}`} />
+              </ListItem>
+              <Divider component="li" />
+              <ListItem>
+                <ListItemText primary={`Defesa: ${props.statusMonstro.status.defesa}`} />
+              </ListItem>
+              <Divider component="li" />
+              <ListItem>
+                <ListItemText primary={`Esquiva: ${props.statusMonstro.status.esquiva}`} />
+              </ListItem>
+              <Divider component="li" />
+            </List>
+          </>
+          ) : (
+            <List>
+              <ListItem>
+                <ListItemText primary="Sem monstros na área!" />
+              </ListItem>
+              <Divider component="li" />
+            </List>
+          ) }
         </Grid>
 
       </Grid>

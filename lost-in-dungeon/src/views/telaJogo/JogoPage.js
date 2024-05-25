@@ -38,10 +38,10 @@ class JogoPage extends React.Component {
                     <Grid sx={{ color: 'red', fontSize: '70px' }} item xs={12}>LOST IN DUNGEON</Grid>
                     <Grid sx={{ color: 'red', fontSize: '25px' }} item xs={12}>Salas restantes {this.calaboucoStarterStore.salasRestantes}</Grid>
                     <Grid item sx={{marginTop: '10px'}}>
-                        <PainelExibeTexto statusJogador={this.calaboucoStarterStore.jogador.status} statusMonstro={this.monstrosStore.getMonstro} texto={this.geradorTextoStore.logCompleto} />
+                        <PainelExibeTexto statusJogador={this.calaboucoStarterStore.jogador} statusMonstro={this.monstrosStore.getMonstro} texto={this.geradorTextoStore.logCompleto} />
                     </Grid>
                     <Grid container item sx={{marginTop: '50px'}} justifyContent="center" alignItems={"center"}>
-                        <PainelBotoes acoes={this.calaboucoStarterStore.getAcoesfase} clique={this.receberEscolha}/>
+                        <PainelBotoes acoes={this.calaboucoStarterStore.getAcoesfase} statusJogador={this.calaboucoStarterStore.jogador} clique={this.receberEscolha}/>
                     </Grid>
                 </Grid>
                 
