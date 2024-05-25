@@ -19,6 +19,10 @@ class MonstrosStore {
                 monstroNovo.nascer(this.getRandomNumber(constantes.monstros.length));
                 this.monstrosCalabouco.push(monstroNovo);
             }
+
+            const monstroNovo = new Monstro();
+            monstroNovo.nascerEspecial(this.getRandomNumber(constantes.monstrosEspeciais.length));
+            this.monstrosCalabouco.push(monstroNovo);
         } catch (error) {
             console.log(error, 'Erro ao gerart monstros!');
         }

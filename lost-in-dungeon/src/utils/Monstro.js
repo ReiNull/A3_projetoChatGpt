@@ -37,6 +37,22 @@ class Monstro {
         }
     }
 
+    nascerEspecial(indexMonstro) {
+        if(indexMonstro < constantes.monstros.length) {
+            const referenciaMonstro = structuredClone(constantes.monstrosEspeciais[indexMonstro]);
+
+            this.src               = referenciaMonstro.src;
+            this.status            = referenciaMonstro.status;
+            this.descricao         = referenciaMonstro.descricao;
+            this.descricaoChatGpt  = referenciaMonstro.descricaoChatGpt;
+            this.caracteristicas   = referenciaMonstro.caracteristicas[this.getRandomCaracteristica(indexMonstro)];
+            this.acoes             = referenciaMonstro.acoesMonstro;
+            this.nasceu            = true;
+        } else {
+            console.log('Index está além do que existe disponível para monstros');
+        }
+    }
+
     realizarAcao() {
         return this.acoes[this.getRandomAcao()];
     }

@@ -64,15 +64,7 @@ export default function SimpleContainer(props) {
             <Divider component="li" />
           </List>
         </Grid>
-        {/* <Grid flexGrow={1} item xs={2}>
-            <Box sx={{ alignItems: 'flex-start', bgcolor: '#990000', height: '50vh', border: '2px solid brown' }}>
-          <Button sx={{ fontFamily: 'VT323' }} disableRipple='true' fullWidth variant='contained'>STATUS</Button>
-          <Button sx={{ fontFamily: 'VT323' }} disableRipple='true' fullWidth variant='contained'>Vida: {props.statusJogador.vida}</Button>
-          <Button sx={{ fontFamily: 'VT323' }} disableRipple='true' fullWidth variant='contained'>Ataque: {props.statusJogador.ataque}</Button>
-          <Button sx={{ fontFamily: 'VT323' }} disableRipple='true' fullWidth variant='contained'>Defesa: {props.statusJogador.defesa}</Button>
-          <Button sx={{ fontFamily: 'VT323' }} disableRipple='true' fullWidth variant='contained'>Esquiva: {props.statusJogador.esquiva}</Button> 
-            </Box>
-        </Grid> */}
+
         <Grid item xs={6}>
           <Box sx={{ fontSize: '23px', bgcolor: 'rgba(3, 3, 3, 0.72)', color: 'white', height: '50vh', width:'100%', borderRadius: 2, border: '2px solid red' }}>
             {props.texto}
@@ -80,7 +72,7 @@ export default function SimpleContainer(props) {
         </Grid>
 
         <Grid item sx={style} marginLeft={5}>
-          { props.statusJogador.encontrouMonstro ? (
+          { props.statusJogador.encontrouMonstro || props.statusJogador.jogadorMorreu ? (
             <>
             <Imagem src={props.statusMonstro.src} />
             <List>

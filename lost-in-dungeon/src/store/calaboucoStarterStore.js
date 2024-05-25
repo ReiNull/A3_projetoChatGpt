@@ -54,6 +54,8 @@ class CalaboucoStarterStore {
             
             if(this.jogador.jogadorMorreu) {
                 this.faseAtual = null;
+                this.jogador.jogadorMorreu = true;
+                this.jogador.encontrouMonstro = false;
                 this.geradorTextoStore.jogadorMorreu();
             }
         } else {
