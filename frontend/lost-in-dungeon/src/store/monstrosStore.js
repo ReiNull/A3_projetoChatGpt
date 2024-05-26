@@ -51,6 +51,7 @@ class MonstrosStore {
                 this._criarMonstro('NORMAL');
             }
             //this._criarMonstro('ESPECIAL');
+            console.log(this.monstrosCalabouco);
         } catch (error) {
             console.log(error, 'Erro ao gerar monstros!');
         }
@@ -61,7 +62,8 @@ class MonstrosStore {
             this.monstroIndex = this._getRandomNumber(this.monstrosCalabouco.length);
             this.monstro = this.monstrosCalabouco[this.monstroIndex];
 
-            this.geradorTextoStore.monstroChamado(this.monstro.descricaoChatGpt.replace(':caracteristica', this.monstro.caracteristicas));
+            this.geradorTextoStore.gerarLog(this.monstro.descricao + ' Surgiu!');  //LOG {Monstro}
+            this.geradorTextoStore.monstroChamado(this.monstro.descricaoDetalhada()); //LOG {Monstro Descricao}
         }
     }
 

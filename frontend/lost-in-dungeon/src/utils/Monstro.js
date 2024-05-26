@@ -32,6 +32,10 @@ class Monstro {
         this.nasceu            = true;
     }
 
+    descricaoDetalhada() {
+        return this.descricaoChatGpt.replace(':caracteristica', this.caracteristicas);
+    }
+
     realizarAcao() {
         return this.acoes[this._getRandomNumber(this.acoes.length)];
     }

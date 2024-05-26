@@ -1,14 +1,40 @@
 import logsDefault from "../utils/logsDefault";
 import ChatgptStore from './chatgptStore';
-class GeradorTextoStore {
-    logCompleto = '';
-    chatgptStore = new ChatgptStore();
 
+class GeradorTextoStore {
+    chatgptStore = new ChatgptStore();
+    
     constructor() {
+        this.state = {
+            logCompleto: ""
+        };
+        this.listeners = [];
+
         this.inicializador = this.inicializador.bind(this);
         this.gerarLog = this.gerarLog.bind(this);
         this.gerouCalabouco = this.gerouCalabouco.bind(this);
         this.monstroChamado = this.monstroChamado.bind(this);
+    }
+
+    subscribe(listener) {
+        this.listeners.push(listener);
+    }
+
+    unsubscribe(listener) {
+        this.listeners = this.listeners.filter(l => l !== listener);
+    }
+
+    setLogCompleto(newLog) {
+        this.state.logCompleto = newLog;
+        this.notify();
+    }
+
+    notify() {
+        this.listeners.forEach(listener => listener(this.state));
+    }
+
+    getState() {
+        return this.state;
     }
 
     inicializador(salaDescricao) {
@@ -16,13 +42,13 @@ class GeradorTextoStore {
     }
 
     gerarLog(log) {
-        const novoTexto = this.logCompleto + ' ||' + log + '||';
-        this.logCompleto = novoTexto;
+        const novoTexto = this.state.logCompleto + ' ||' + log + '||';
+        this.setLogCompleto(novoTexto); // Atualiza o estado e notifica os ouvintes
     }
 
     gerouCalabouco() {
-        const novoTexto = this.logCompleto + ' ||' + logsDefault.LOGS.calabouco_gerado + '||'; 
-        this.logCompleto = novoTexto;
+        const novoTexto = this.state.logCompleto + ' ||' + logsDefault.LOGS.calabouco_gerado + '||'; 
+        this.setLogCompleto(novoTexto); // Atualiza o estado e notifica os ouvintes
     }
 
     jogadorMorreu() {
@@ -35,9 +61,7 @@ class GeradorTextoStore {
 
     monstroChamado(texto) {
         this.chatgptStore.retornarDescricao(texto, res => {
-
             this.gerarLog(res);
-            console.log(this.logCompleto);
         });
     }
 
@@ -50,7 +74,7 @@ class GeradorTextoStore {
     }
 
     get getLogCompleto() {
-        return this.descricaoCarregando ? 'Carregando' : this.logCompleto;
+        return this.descricaoCarregando ? 'Carregando' : this.state.logCompleto;
     }
 
     get descricaoCarregando() {
