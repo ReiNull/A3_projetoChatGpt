@@ -1,11 +1,14 @@
 import logsDefault from "../utils/logsDefault";
+import ChatgptStore from './chatgptStore';
 class GeradorTextoStore {
     logCompleto = '';
+    chatgptStore = new ChatgptStore();
 
     constructor() {
         this.inicializador = this.inicializador.bind(this);
         this.gerarLog = this.gerarLog.bind(this);
         this.gerouCalabouco = this.gerouCalabouco.bind(this);
+        this.monstroChamado = this.monstroChamado.bind(this);
     }
 
     inicializador(salaDescricao) {
@@ -23,23 +26,35 @@ class GeradorTextoStore {
     }
 
     jogadorMorreu() {
-        return this.gerarLog(logsDefault.LOGS.jogador_morre);
+        this.gerarLog(logsDefault.LOGS.jogador_morre);
     }
 
     jogadorEscapou() {
-        return this.gerarLog(logsDefault.LOGS.jogador_escapa_calabouco);
+        this.gerarLog(logsDefault.LOGS.jogador_escapa_calabouco);
+    }
+
+    monstroChamado(texto) {
+        this.chatgptStore.retornarDescricao(texto, res => {
+
+            this.gerarLog(res);
+            console.log(this.logCompleto);
+        });
     }
 
     semMonstros() {
-        return this.gerarLog(logsDefault.LOGS.sem_monstros);
+        this.gerarLog(logsDefault.LOGS.sem_monstros);
     }
 
     semMonstrosDefinitivo() {
-        return this.gerarLog(logsDefault.LOGS.sem_monstros_definitivo);
+        this.gerarLog(logsDefault.LOGS.sem_monstros_definitivo);
     }
 
     get getLogCompleto() {
-        return this.logCompleto;
+        return this.descricaoCarregando ? 'Carregando' : this.logCompleto;
+    }
+
+    get descricaoCarregando() {
+        return this.chatgptStore.loading;
     }
 }
 

@@ -60,7 +60,8 @@ class MonstrosStore {
         if(this.monstrosCalabouco.length) {
             this.monstroIndex = this._getRandomNumber(this.monstrosCalabouco.length);
             this.monstro = this.monstrosCalabouco[this.monstroIndex];
-            console.log(this.monstro);
+
+            this.geradorTextoStore.monstroChamado(this.monstro.descricaoChatGpt.replace(':caracteristica', this.monstro.caracteristicas));
         }
     }
 

@@ -18,6 +18,10 @@ class JogoPage extends React.Component {
         this.monstrosStore = new MonstrosStore(this.geradorTextoStore, 5);
         this.calaboucoStarterStore = new CalaboucoStarterStore(this.geradorTextoStore, this.monstrosStore, props.fasesTotais);
 
+        this.state = {
+            logCompleto: this.geradorTextoStore.getLogCompleto,
+        }
+
         this.receberEscolha = this.receberEscolha.bind(this);
         this.avancarFase = this.avancarFase.bind(this);
     }
@@ -38,7 +42,7 @@ class JogoPage extends React.Component {
                     <Grid sx={{ color: 'red', fontSize: '70px' }} item xs={12}>LOST IN DUNGEON</Grid>
                     <Grid sx={{ color: 'red', fontSize: '25px' }} item xs={12}>Salas restantes {this.calaboucoStarterStore.salasRestantes}</Grid>
                     <Grid item sx={{marginTop: '10px'}}>
-                        <PainelExibeTexto statusJogador={this.calaboucoStarterStore.jogador} statusMonstro={this.monstrosStore.getMonstro} texto={this.geradorTextoStore.logCompleto} />
+                        <PainelExibeTexto statusJogador={this.calaboucoStarterStore.jogador} statusMonstro={this.monstrosStore.getMonstro} texto={this.geradorTextoStore.getLogCompleto} />
                     </Grid>
                     <Grid container item sx={{marginTop: '50px'}} justifyContent="center" alignItems={"center"}>
                         <PainelBotoes acoes={this.calaboucoStarterStore.getAcoesfase} statusJogador={this.calaboucoStarterStore.jogador} clique={this.receberEscolha}/>
