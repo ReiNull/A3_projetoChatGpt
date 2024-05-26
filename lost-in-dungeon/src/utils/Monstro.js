@@ -26,7 +26,7 @@ class Monstro {
         this.status            = referenciaMonstro.status;
         this.descricao         = referenciaMonstro.descricao;
         this.descricaoChatGpt  = referenciaMonstro.descricaoChatGpt;
-        this.caracteristicas   = referenciaMonstro.caracteristicas[this._getRandomNumber(referenciaMonstro.caracteristicas.length)];
+        this.caracteristicas   = referenciaMonstro.caracteristicas && referenciaMonstro.caracteristicas[this._getRandomNumber(referenciaMonstro.caracteristicas.length)];
         this.acoes             = referenciaMonstro.acoesMonstro;
         this.nasceu            = true;
     }
