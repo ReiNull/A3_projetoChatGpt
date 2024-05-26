@@ -30,6 +30,14 @@ class GeradorTextoStore {
         return this.gerarLog(logsDefault.LOGS.jogador_escapa_calabouco);
     }
 
+    semMonstros() {
+        return this.gerarLog(logsDefault.LOGS.sem_monstros);
+    }
+
+    semMonstrosDefinitivo() {
+        return this.gerarLog(logsDefault.LOGS.sem_monstros_definitivo);
+    }
+
     get getLogCompleto() {
         return this.logCompleto;
     }

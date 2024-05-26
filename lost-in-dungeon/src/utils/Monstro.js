@@ -1,5 +1,6 @@
 import constantes from '../utils/constantes';
 class Monstro {
+    src = '**NULL**';
     status = '**NULL**';
     descricao = '**NULL**';
     descricaoChatGpt = '**NULL**';

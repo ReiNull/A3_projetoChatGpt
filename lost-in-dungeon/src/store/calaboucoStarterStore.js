@@ -1,7 +1,7 @@
+import constantes from '../utils/constantes';
 import GeradorTextoStore from './geradorTextoStore';
 import MonstrosStore from './monstrosStore';
 import Fase from '../utils/Fase';
-import Monstro from '../utils/Monstro';
 import Jogador from '../utils/Jogador';
 
 class CalaboucoStarterStore {
@@ -13,28 +13,47 @@ class CalaboucoStarterStore {
     faseAtual = new Fase();
     jogador = new Jogador();
 
-    constructor(qtdfases, geradorTextoStore, monstrosStore) {
-        this.qtdFasesTotais = qtdfases;
+    constructor(geradorTextoStore, monstrosStore, qtdfases) {
         this.geradorTextoStore = geradorTextoStore;
         this.monstrosStore = monstrosStore;
+        this.qtdFasesTotais = qtdfases;
 
         this.monstrosStore._gerarMonstros();
         this._gerarfases();
+    }
+
+    _getRandomNumber(maxNum) {
+        return Math.floor(Math.random() * maxNum);
+    }
+
+    _indexValido(index, indexMaximo) {
+        let indexFinal = index;
+        if(index > indexMaximo || index < 0 || index == undefined) {
+            indexFinal = this._getRandomNumber(indexMaximo);
+        }
+
+        return indexFinal;
+    }
+
+    _criarFase(indexFase) {
+        try {
+            indexFase = this._indexValido(indexFase, constantes.fases.length);
+            const fase = new Fase(structuredClone(constantes.fases[indexFase]));
+            this.fasesCalabouco.push(fase);
+        } catch (error) {
+            console.log(error, 'Erro ao gerar fase!');
+        }
     }
 
     _gerarfases() {
         try {
             //Gera as fases do calabouço baseado na quantidade totais de fases informadas.
             for (let index = 0; index < this.qtdFasesTotais; index++) {
-                const novaFase = new Fase();
-                novaFase.carregarFaseAleatoria();
-                this.fasesCalabouco.push(novaFase);
+                this._criarFase(1);
             }
-            //LOG {Gerou Calabouco}
-            this.geradorTextoStore.gerouCalabouco();
-            
-            // Avancar para a primeira fase da lista de fases totai geradas anteriormente.
-            this.avancarFase();
+
+            this.geradorTextoStore.gerouCalabouco(); //LOG {Gerou Calabouco}
+            this.avancarFase(); // Avancar para a primeira fase da lista de fases totai geradas anteriormente.
         } catch (error) {
             console.log(error, 'Erro ao montar calabouço!');
         }
@@ -44,7 +63,7 @@ class CalaboucoStarterStore {
         const { monstro } = this.monstrosStore;
 
         monstro.receberDano(this.jogador.status.ataque);
-        this.geradorTextoStore.gerarLog('Você ataca o ' + monstro.descricao + '!!!');
+        this.geradorTextoStore.gerarLog('Você ataca ' + monstro.descricao + '!!!');
         console.log(monstro.status);
 
         if(!monstro.monstroMorreu) {
@@ -59,7 +78,7 @@ class CalaboucoStarterStore {
                 this.geradorTextoStore.jogadorMorreu();
             }
         } else {
-            this.geradorTextoStore.gerarLog('VOCÊ MATOU O ' + monstro.descricao.toUpperCase() + '!!!');
+            this.geradorTextoStore.gerarLog('VOCÊ MATOU ' + monstro.descricao.toUpperCase() + '!!!');
 
             this.monstrosStore.matarMonstro();
             this.jogador.encontrouMonstro = false;
@@ -77,10 +96,13 @@ class CalaboucoStarterStore {
                 this.jogador.lidarComConsequencia(consequencia);
                 this.geradorTextoStore.gerarLog('Você fez sua escolha, e o resultado é: ' + consequencia); //LOG {Escolha}
 
-                if(this.jogador.encontrouMonstro) {
+                if(this.jogador.encontrouMonstro && this.monstrosStore.existeMonstros) {
                     this.monstrosStore.chamarMonstro();
-                    this.geradorTextoStore.gerarLog(this.monstrosStore.monstro.descricao + ' Surgiu!');  //LOg {Monstro}
+                    this.geradorTextoStore.gerarLog(this.monstrosStore.monstro.descricao + ' Surgiu!');  //LOG {Monstro}
                     return;
+                } else {
+                    this.jogador.encontrouMonstro = false;
+                    this.geradorTextoStore.semMonstrosDefinitivo(); //LOG {Sem Monstros}
                 }
                 
                 if(this.jogador.jogadorMorreu){
@@ -95,20 +117,17 @@ class CalaboucoStarterStore {
         }
     }
 
-    // Avancar para proxima fase ou remover sala tirando botoes de escolha.
     avancarFase() {
         try {
             this.indexfaseAtual += 1;
             if(this.indexfaseAtual < this.fasesCalabouco.length) {      
                 this.faseAtual = this.fasesCalabouco[this.indexfaseAtual];
 
-                //LOG {Avanco Fase}
-                this.geradorTextoStore.gerarLog('Você avança para a sala adiante...');
-                this.geradorTextoStore.gerarLog(this.faseAtual.descricao);
+                this.geradorTextoStore.gerarLog('Você avança para a sala adiante...'); //LOG {Avanco Fase}
+                this.geradorTextoStore.gerarLog(this.faseAtual.descricao); //LOG {Fase Descricao}
             } else {
                 this.faseAtual = null;
-                //LOG {Escapou}
-                this.geradorTextoStore.jogadorEscapou();
+                this.geradorTextoStore.jogadorEscapou(); //LOG {Escapou}
             }
         } catch (error) {
             console.log('Não há mais fases para serem geradas!');

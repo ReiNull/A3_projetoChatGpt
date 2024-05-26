@@ -1,11 +1,18 @@
 import constantes from '../utils/constantes';
+import GeradorTextoStore from './geradorTextoStore';
 import Monstro from '../utils/Monstro';
 
 class MonstrosStore {
-    qtdMonstrosTotais = 4;
+    geradorTextoStore = new GeradorTextoStore();
+    qtdMonstrosTotais = 1;
     monstrosCalabouco = [];
     monstro = new Monstro();
     monstroIndex = undefined;
+
+    constructor(geradorTextoStore, qtdMonstrosTotais) {
+        this.geradorTextoStore = geradorTextoStore;
+        this.qtdMonstrosTotais = qtdMonstrosTotais;
+    }
 
     _getRandomNumber(maxNum) {
         return Math.floor(Math.random() * maxNum);
@@ -43,16 +50,18 @@ class MonstrosStore {
             for (let index = 0; index < this.qtdMonstrosTotais; index++) {
                 this._criarMonstro('NORMAL');
             }
-            this._criarMonstro('ESPECIAL');
+            //this._criarMonstro('ESPECIAL');
         } catch (error) {
             console.log(error, 'Erro ao gerar monstros!');
         }
     }
 
     chamarMonstro() {
-        this.monstroIndex = this._getRandomNumber(this.monstrosCalabouco.length);
-        this.monstro = this.monstrosCalabouco[this.monstroIndex];
-        console.log(this.monstro);
+        if(this.monstrosCalabouco.length) {
+            this.monstroIndex = this._getRandomNumber(this.monstrosCalabouco.length);
+            this.monstro = this.monstrosCalabouco[this.monstroIndex];
+            console.log(this.monstro);
+        }
     }
 
     matarMonstro() {
@@ -61,6 +70,15 @@ class MonstrosStore {
             this.monstro = new Monstro();
             this.monstroIndex = undefined;
         }
+
+        if(!this.monstrosCalabouco.length) {
+            this._criarMonstro('ESPECIAL', 0);
+            this.geradorTextoStore.semMonstros();
+        }
+    }
+
+    get existeMonstros() {
+        return this.monstrosCalabouco.length;
     }
 
     get getMonstro() {

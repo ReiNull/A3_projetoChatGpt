@@ -75,7 +75,7 @@ const constantes = {
             descricaoChatGpt: 'Me descreva um lobisomem :caracteristica, no máximo 20 palavras, texto corrido',
             src: Lobisomem,
             acoesMonstro: [
-                { descricao: 'Mordida', dano: 5, statusDebuff: null, descricaoChatGpt: 'Descreva um lobisomem me mordendo' },
+                { descricao: 'Mordida', dano: 15, statusDebuff: null, descricaoChatGpt: 'Descreva um lobisomem me mordendo' },
                 { descricao: 'Rosnado', dano: 0, statusDebuff: { ataque: 2, esquiva: 5 }, descricaoChatGpt: 'Descreva um lobisomem rosnando para mim'}
             ],
         },
