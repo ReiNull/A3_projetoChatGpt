@@ -9,52 +9,30 @@ class Monstro {
     nasceu = false;
     monstroMorreu = false;
 
-    constructor() {
-        this.getRandomAcao = this.getRandomAcao.bind(this);
-    }
-
-    getRandomAcao() {
-        return Math.floor(Math.random() * this.acoes.length);
-    }
-
-    getRandomCaracteristica(indexMonstro) {
-        return Math.floor(Math.random() * constantes.monstros[indexMonstro].caracteristicas.length);
-    }
-
-    nascer(indexMonstro) {
-        if(indexMonstro < constantes.monstros.length) {
-            const referenciaMonstro = structuredClone(constantes.monstros[indexMonstro]);
-
-            this.src               = referenciaMonstro.src;
-            this.status            = referenciaMonstro.status;
-            this.descricao         = referenciaMonstro.descricao;
-            this.descricaoChatGpt  = referenciaMonstro.descricaoChatGpt;
-            this.caracteristicas   = referenciaMonstro.caracteristicas[this.getRandomCaracteristica(indexMonstro)];
-            this.acoes             = referenciaMonstro.acoesMonstro;
-            this.nasceu            = true;
-        } else {
-            console.log('Index está além do que existe disponível para monstros');
+    constructor(referenciaMonstro) {
+        if(referenciaMonstro) {
+            this._carregarInformacoes(referenciaMonstro);
         }
+        
+        this._carregarInformacoes = this._carregarInformacoes.bind(this);
     }
 
-    nascerEspecial(indexMonstro) {
-        if(indexMonstro < constantes.monstros.length) {
-            const referenciaMonstro = structuredClone(constantes.monstrosEspeciais[indexMonstro]);
+    _getRandomNumber(maxNum) {
+        return Math.floor(Math.random() * maxNum);
+    }
 
-            this.src               = referenciaMonstro.src;
-            this.status            = referenciaMonstro.status;
-            this.descricao         = referenciaMonstro.descricao;
-            this.descricaoChatGpt  = referenciaMonstro.descricaoChatGpt;
-            this.caracteristicas   = referenciaMonstro.caracteristicas[this.getRandomCaracteristica(indexMonstro)];
-            this.acoes             = referenciaMonstro.acoesMonstro;
-            this.nasceu            = true;
-        } else {
-            console.log('Index está além do que existe disponível para monstros');
-        }
+    _carregarInformacoes(referenciaMonstro) {
+        this.src               = referenciaMonstro.src;
+        this.status            = referenciaMonstro.status;
+        this.descricao         = referenciaMonstro.descricao;
+        this.descricaoChatGpt  = referenciaMonstro.descricaoChatGpt;
+        this.caracteristicas   = referenciaMonstro.caracteristicas[this._getRandomNumber(referenciaMonstro.caracteristicas.length)];
+        this.acoes             = referenciaMonstro.acoesMonstro;
+        this.nasceu            = true;
     }
 
     realizarAcao() {
-        return this.acoes[this.getRandomAcao()];
+        return this.acoes[this._getRandomNumber(this.acoes.length)];
     }
 
     receberDano(dano) {

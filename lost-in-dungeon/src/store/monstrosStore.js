@@ -7,29 +7,50 @@ class MonstrosStore {
     monstro = new Monstro();
     monstroIndex = undefined;
 
-    getRandomNumber(maxNum) {
+    _getRandomNumber(maxNum) {
         return Math.floor(Math.random() * maxNum);
+    }
+
+    _indexValido(index, indexMaximo) {
+        let indexFinal = index;
+        if(index > indexMaximo || index < 0 || index == undefined) {
+            indexFinal = this._getRandomNumber(indexMaximo);
+        }
+
+        return indexFinal;
+    }
+
+    _criarMonstro(tipo, indexMonstro) {
+        try {
+            if(tipo == 'NORMAL') {
+
+                indexMonstro = this._indexValido(indexMonstro, constantes.monstros.length);
+                const monstro = new Monstro(structuredClone(constantes.monstros[indexMonstro]));
+                this.monstrosCalabouco.push(monstro);
+            } else if (tipo == 'ESPECIAL') {
+    
+                indexMonstro = this._indexValido(indexMonstro, constantes.monstrosEspeciais.length);
+                const monstro = new Monstro(structuredClone(constantes.monstrosEspeciais[indexMonstro]));
+                this.monstrosCalabouco.push(monstro);
+            }
+        } catch (error) {
+            console.log(error, 'Erro ao gerar monstro!');
+        }
     }
 
     _gerarMonstros() {
         try {
-            //Gera as fases do calabouço baseado na quantidade totais de fases informadas.
             for (let index = 0; index < this.qtdMonstrosTotais; index++) {
-                const monstroNovo = new Monstro();
-                monstroNovo.nascer(this.getRandomNumber(constantes.monstros.length));
-                this.monstrosCalabouco.push(monstroNovo);
+                this._criarMonstro('NORMAL');
             }
-
-            const monstroNovo = new Monstro();
-            monstroNovo.nascerEspecial(this.getRandomNumber(constantes.monstrosEspeciais.length));
-            this.monstrosCalabouco.push(monstroNovo);
+            this._criarMonstro('ESPECIAL');
         } catch (error) {
-            console.log(error, 'Erro ao gerart monstros!');
+            console.log(error, 'Erro ao gerar monstros!');
         }
     }
 
     chamarMonstro() {
-        this.monstroIndex = this.getRandomNumber(this.monstrosCalabouco.length);
+        this.monstroIndex = this._getRandomNumber(this.monstrosCalabouco.length);
         this.monstro = this.monstrosCalabouco[this.monstroIndex];
         console.log(this.monstro);
     }
