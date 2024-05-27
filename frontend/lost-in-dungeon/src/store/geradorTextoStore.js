@@ -6,7 +6,8 @@ class GeradorTextoStore {
     
     constructor() {
         this.state = {
-            logCompleto: ""
+            logCompleto: "",
+            carregando: false
         };
         this.listeners = [];
 
@@ -26,6 +27,11 @@ class GeradorTextoStore {
 
     setLogCompleto(newLog) {
         this.state.logCompleto = newLog;
+        this.notify();
+    }
+
+    setCarregando(isLoading) {
+        this.state.carregando = isLoading;
         this.notify();
     }
 
@@ -60,8 +66,10 @@ class GeradorTextoStore {
     }
 
     descricaoPorChatgpt(texto) {
+        this.setCarregando(true);
         this.chatgptStore.retornarDescricao(texto, res => {
             this.gerarLog(res);
+            this.setCarregando(false);
         });
     }
 
@@ -78,7 +86,7 @@ class GeradorTextoStore {
     }
 
     get descricaoCarregando() {
-        return this.chatgptStore.loading;
+        return this.state.carregando || this.chatgptStore.loading;
     }
 }
 

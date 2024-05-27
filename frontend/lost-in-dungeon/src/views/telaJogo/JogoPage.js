@@ -15,7 +15,8 @@ class JogoPage extends React.Component {
         this.calaboucoStarterStore = new CalaboucoStarterStore(this.geradorTextoStore, this.monstrosStore, props.fasesTotais);
 
         this.state = {
-            logCompleto: this.geradorTextoStore.getState().logCompleto
+            logCompleto: this.geradorTextoStore.getState().logCompleto,
+            carregando: this.geradorTextoStore.getState().carregando
         };
 
         this.handleStateChange = this.handleStateChange.bind(this);
@@ -32,7 +33,7 @@ class JogoPage extends React.Component {
     }
 
     handleStateChange(state) {
-        this.setState({ logCompleto: state.logCompleto });
+        this.setState({ logCompleto: state.logCompleto, carregando: state.carregando });
     }
 
     receberEscolha(indexAcao) {
@@ -49,12 +50,12 @@ class JogoPage extends React.Component {
             <Grid alignItems={"center"}>
                 <Grid justifyContent="center" alignItems={"center"}>
                     <Grid sx={{ color: 'red', fontSize: '70px' }} item xs={12}>LOST IN DUNGEON</Grid>
-                    <Grid sx={{ color: 'red', fontSize: '25px' }} item xs={12}>Salas restantes: {this.calaboucoStarterStore.salasRestantes} Estado: {this.geradorTextoStore.descricaoCarregando ? 'Carregando' : 'Pronto'}</Grid>
+                    <Grid sx={{ color: 'red', fontSize: '25px' }} item xs={12}>Salas restantes: {this.calaboucoStarterStore.salasRestantes} Estado: {this.state.carregando ? 'Carregando' : 'Pronto'}</Grid>
                     <Grid item sx={{marginTop: '10px'}}>
                         <PainelExibeTexto statusJogador={this.calaboucoStarterStore.jogador} statusMonstro={this.monstrosStore.getMonstro} texto={this.state.logCompleto} />
                     </Grid>
                     <Grid container item sx={{marginTop: '50px'}} justifyContent="center" alignItems={"center"}>
-                        <PainelBotoes acoes={this.calaboucoStarterStore.getAcoesfase} statusJogador={this.calaboucoStarterStore.jogador} clique={this.receberEscolha} />
+                        <PainelBotoes acoes={this.calaboucoStarterStore.getAcoesfase} statusJogador={this.calaboucoStarterStore.jogador} clique={this.receberEscolha} carregando={this.state.carregando} />
                     </Grid>
                 </Grid>
             </Grid>
