@@ -21,3 +21,15 @@ https://mui.com/components/
 
 Imagens geradas a partir de I.A.:
 https://openart.ai/create
+
+
+Rodar o projeto
+Abrir novo terminal
+-cd backend
+-npm install (Baixou projeto pela primeira vez)
+-npm start:dev
+
+Abrir novo terminal
+-cd frontend
+-npm install (Baixou projeto pela primeira vez)
+-npm start
