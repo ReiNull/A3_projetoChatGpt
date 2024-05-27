@@ -80,14 +80,6 @@ class GeradorTextoStore {
     semMonstrosDefinitivo() {
         this.gerarLog(logsDefault.LOGS.sem_monstros_definitivo);
     }
-
-    get getLogCompleto() {
-        return this.descricaoCarregando ? 'Carregando' : this.state.logCompleto;
-    }
-
-    get descricaoCarregando() {
-        return this.state.carregando || this.chatgptStore.loading;
-    }
 }
 
 export default GeradorTextoStore;
