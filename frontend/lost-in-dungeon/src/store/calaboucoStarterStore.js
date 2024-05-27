@@ -99,7 +99,7 @@ class CalaboucoStarterStore {
                 if(this.jogador.encontrouMonstro && this.monstrosStore.existeMonstros) {
                     this.monstrosStore.chamarMonstro();
                     return;
-                } else {
+                } else if(consequencia == 'ENCONTRO_MONSTRO') {
                     this.jogador.encontrouMonstro = false;
                     this.geradorTextoStore.semMonstrosDefinitivo(); //LOG {Sem Monstros}
                 }
