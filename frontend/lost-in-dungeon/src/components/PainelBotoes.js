@@ -20,7 +20,7 @@ export default function NestedGrid(props) {
                     </Grid>
                     <Grid justifyContent="center" alignItems="center" container item spacing={3}>
                         <Grid item xs={5}>
-                            <Button disabled={props.carregando} onClick={()=>props.clique(2)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px', backgroundColor:'black' }}>ESQUIVA</Button>
+                            <Button disabled={props.carregando} onClick={()=>props.clique(3)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px', backgroundColor:'black' }}>ESQUIVA</Button>
                         </Grid>
                         <Grid item xs={5}>
                             <Button disabled={props.carregando} onClick={()=>props.clique(4)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px', backgroundColor:'black' }}>FUGIR</Button>
@@ -44,7 +44,7 @@ export default function NestedGrid(props) {
                     <Grid justifyContent="center" alignItems="center" container item spacing={3}>
                         {props.acoes && props.acoes['3'] ? (
                             <Grid item xs={5}>
-                                <Button disabled={props.carregando} onClick={()=>props.clique(2)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px', backgroundColor:'black' }}>{props.acoes['3']}</Button>
+                                <Button disabled={props.carregando} onClick={()=>props.clique(3)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px', backgroundColor:'black' }}>{props.acoes['3']}</Button>
                             </Grid>
                         ) : null}
                         {props.acoes && props.acoes['4'] ? (

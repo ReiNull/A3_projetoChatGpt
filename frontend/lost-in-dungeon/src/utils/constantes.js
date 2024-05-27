@@ -34,8 +34,8 @@ const constantes = {
     // Possíveis fases do jogo
     fases: [
         { 
-            descricao: 'sala com Baú monstruoso' ,
-            descricaoChatGpt: 'Descreva uma sala com Baú monstruoso, no máximo 20 palavras, texto corrido',
+            descricao: 'Sala com Baú monstruoso' ,
+            descricaoChatGpt: 'Descreva uma sala com Baú monstruoso, no presente, no máximo 20 palavras, texto corrido',
             escolhas: {
                 '1': 'Abrir Baú',
                 '2': 'Chutar Baú',
@@ -49,7 +49,7 @@ const constantes = {
         },
         { 
             descricao: 'Sala com Neblina tendo uma porta no final' ,
-            descricaoChatGpt: 'Descreva uma sala assustadora com neblina com uma porta no final, no máximo 20 palavras, texto corrido',
+            descricaoChatGpt: 'Descreva uma sala assustadora com neblina com uma porta no final, no presente, no máximo 20 palavras, texto corrido',
             escolhas: {
                 '1': 'Ir até a porta',
                 '2': 'Esperar neblina sumir',
@@ -58,7 +58,37 @@ const constantes = {
                 '1': 'NADA',
                 '2': 'ENCONTRO_MONSTRO',
             }
-        }
+        },
+        { 
+            descricao: 'Sala escura' ,
+            descricaoChatGpt: 'Descreva uma sala escura com barulhos horripilantes sem fim aparente, no presente, no máximo 20 palavras, texto corrido',
+            escolhas: {
+                '1': 'Atravessar Correndo',
+                '2': 'Atravessar Andando',
+                '3': 'Atravessar Rastejando',
+                '4': 'Esperar',
+            },
+            resultados: {
+                '1': 'ENCONTRO_MONSTRO',
+                '2': 'ENCONTRO_MONSTRO',
+                '3': 'NADA',
+                '4': 'ENCONTRO_MONSTRO',
+            }
+        },
+        { 
+            descricao: 'Sala com armadilhas' ,
+            descricaoChatGpt: 'Descreva uma sala cheia de sangue com armadilhas no chão tendo um corredor no final, no presente, no máximo 20 palavras, texto corrido',
+            escolhas: {
+                '1': 'Contornar armadilhas',
+                '2': 'Escalar parede lateral',
+                '3': 'Caminhar lentamente',
+            },
+            resultados: {
+                '1': 'ENCONTRO_MONSTRO',
+                '2': 'NADA',
+                '3': 'PERDER_VIDA',
+            }
+        },
     ],
 
     //Possíveis monstros que estarão no calabouço
