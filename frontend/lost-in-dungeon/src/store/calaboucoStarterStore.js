@@ -94,7 +94,7 @@ class CalaboucoStarterStore {
             } else {
                 const consequencia = this.faseAtual.resultados[indexAcao];
                 this.jogador.lidarComConsequencia(consequencia);
-                this.geradorTextoStore.gerarLog(consequencia.descricao); //LOG {Escolha}
+                this.geradorTextoStore.gerarLog('RESULTADO: '+consequencia.descricao); //LOG {Escolha}
 
                 if(this.jogador.encontrouMonstro && this.monstrosStore.existeMonstros) {
                     this.monstrosStore.chamarMonstro();
