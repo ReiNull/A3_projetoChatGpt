@@ -42,9 +42,9 @@ const constantes = {
                 '3': 'Se Afastar do Baú',
             },
             resultados: {
-                '1': 'PERDER_VIDA',
-                '2': 'GANHAR_VIDA',
-                '3': 'PERDER_VIDA',
+                '1': {resultado: 'PERDER_VIDA', descricao: 'O baú morde seu braço!'},
+                '2': {resultado: 'GANHAR_VIDA', descricao: 'O baú se abre te garantindo uma poção!'},
+                '3': {resultado: 'PERDER_VIDA', descricao: 'Ao se afastar o baú acorda e te morde!'},
             }
         },
         { 
@@ -55,8 +55,8 @@ const constantes = {
                 '2': 'Esperar neblina sumir',
             },
             resultados: {
-                '1': 'NADA',
-                '2': 'ENCONTRO_MONSTRO',
+                '1': {resultado: 'NADA', descricao: 'Conseguiu atravessar sem problemas!'},
+                '2': {resultado: 'ENCONTRO_MONSTRO', descricao: 'Esperou demais... te encontraram!'},
             }
         },
         { 
@@ -69,10 +69,10 @@ const constantes = {
                 '4': 'Esperar',
             },
             resultados: {
-                '1': 'ENCONTRO_MONSTRO',
-                '2': 'ENCONTRO_MONSTRO',
-                '3': 'NADA',
-                '4': 'ENCONTRO_MONSTRO',
+                '1': {resultado: 'ENCONTRO_MONSTRO', descricao: 'Colidiu com um monstro na escuridão'},
+                '2': {resultado: 'ENCONTRO_MONSTRO', descricao: 'Esbarrou em um monstro!'},
+                '3': {resultado: 'NADA', descricao: 'Conseguiu passar sem ser notado!'},
+                '4': {resultado: 'ENCONTRO_MONSTRO', descricao: 'O que achou que aconteceria?'},
             }
         },
         { 
@@ -84,9 +84,9 @@ const constantes = {
                 '3': 'Caminhar lentamente',
             },
             resultados: {
-                '1': 'ENCONTRO_MONSTRO',
-                '2': 'NADA',
-                '3': 'PERDER_VIDA',
+                '1': {resultado: 'ENCONTRO_MONSTRO', descricao: 'Levou tempo demais, um monstro te percebeu!'},
+                '2': {resultado: 'NADA', descricao: 'Fez a escolha mais lógica, escapou ileso!'},
+                '3': {resultado: 'ENCONTRO_MONSTRO', descricao: 'Um monstro te alcançou!'},
             }
         },
     ],
