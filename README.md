@@ -27,9 +27,10 @@ Rodar o projeto
 Abrir novo terminal
 -cd backend
 -npm install (Baixou projeto pela primeira vez)
--npm start:dev
+-npm run start:dev
 
 Abrir novo terminal
 -cd frontend
+-cd lost-in-dungeon
 -npm install (Baixou projeto pela primeira vez)
 -npm start
