@@ -123,7 +123,7 @@ class CalaboucoStarterStore {
                 this.faseAtual = this.fasesCalabouco[this.indexfaseAtual];
 
                 this.geradorTextoStore.gerarLog('Você avança para a sala adiante...'); //LOG {Avanco Fase}
-                this.geradorTextoStore.gerarLog(this.faseAtual.descricao); //LOG {Fase Descricao}
+                this.geradorTextoStore.descricaoPorChatgpt(this.faseAtual.descricaoChatGpt); //LOG {Fase Descricao}
             } else {
                 this.faseAtual = null;
                 this.geradorTextoStore.jogadorEscapou(); //LOG {Escapou}

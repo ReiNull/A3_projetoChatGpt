@@ -13,7 +13,7 @@ class GeradorTextoStore {
         this.inicializador = this.inicializador.bind(this);
         this.gerarLog = this.gerarLog.bind(this);
         this.gerouCalabouco = this.gerouCalabouco.bind(this);
-        this.monstroChamado = this.monstroChamado.bind(this);
+        this.descricaoPorChatgpt = this.descricaoPorChatgpt.bind(this);
     }
 
     subscribe(listener) {
@@ -59,7 +59,7 @@ class GeradorTextoStore {
         this.gerarLog(logsDefault.LOGS.jogador_escapa_calabouco);
     }
 
-    monstroChamado(texto) {
+    descricaoPorChatgpt(texto) {
         this.chatgptStore.retornarDescricao(texto, res => {
             this.gerarLog(res);
         });

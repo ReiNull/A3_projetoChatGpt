@@ -63,7 +63,7 @@ class MonstrosStore {
             this.monstro = this.monstrosCalabouco[this.monstroIndex];
 
             this.geradorTextoStore.gerarLog(this.monstro.descricao + ' Surgiu!');  //LOG {Monstro}
-            this.geradorTextoStore.monstroChamado(this.monstro.descricaoDetalhada()); //LOG {Monstro Descricao}
+            this.geradorTextoStore.descricaoPorChatgpt(this.monstro.descricaoDetalhada()); //LOG {Monstro Descricao}
         }
     }
 

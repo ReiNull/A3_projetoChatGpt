@@ -35,7 +35,7 @@ const constantes = {
     fases: [
         { 
             descricao: 'sala com Baú monstruoso' ,
-            descricaoChatGpt: 'Descreva um Baú monstruoso',
+            descricaoChatGpt: 'Descreva uma sala com Baú monstruoso, no máximo 20 palavras, texto corrido',
             escolhas: {
                 '1': 'Abrir Baú',
                 '2': 'Chutar Baú',
@@ -48,8 +48,8 @@ const constantes = {
             }
         },
         { 
-            descricao: 'sala com Neblina com uma porta no final' ,
-            descricaoChatGpt: 'Descreva uma sala com neblina com uma porta no final',
+            descricao: 'Sala com Neblina tendo uma porta no final' ,
+            descricaoChatGpt: 'Descreva uma sala assustadora com neblina com uma porta no final, no máximo 20 palavras, texto corrido',
             escolhas: {
                 '1': 'Ir até a porta',
                 '2': 'Esperar neblina sumir',
@@ -72,7 +72,7 @@ const constantes = {
             },
             descricao: 'O Lobisomem' ,
             caracteristicas: ['Raivoso', 'Triste', 'Cansado', 'Louco'],
-            descricaoChatGpt: 'Me descreva um lobisomem :caracteristica, no máximo 20 palavras, texto corrido',
+            descricaoChatGpt: 'Descreva um lobisomem :caracteristica, no máximo 20 palavras, texto corrido',
             src: Lobisomem,
             acoesMonstro: [
                 { descricao: 'Mordida', dano: 15, statusDebuff: null, descricaoChatGpt: 'Descreva um lobisomem me mordendo' },
@@ -106,7 +106,7 @@ const constantes = {
             },
             descricao: 'A Morte' ,
             caracteristicas: ['Aterrorizante'],
-            descricaoChatGpt: 'Me descreva um ceifador emcapuzado :caracteristica, no máximo 20 palavras, texto corrido',
+            descricaoChatGpt: 'Me descreva a morte emcapuzada :caracteristica, no máximo 20 palavras, texto corrido',
             src: Morte,
             acoesMonstro: [
                 { descricao: 'Matar', dano: 999, statusDebuff: null, descricaoChatGpt: 'Descreva um ceifador colhendo almas' },
