@@ -4,7 +4,6 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
-import CaixaTexto from './CaixaTexto.js';
 
 import Imagem from './Imagem';
 import Vida from '../img/coracao.png';
@@ -32,6 +31,13 @@ const style = {
 };
 
 export default function SimpleContainer(props) {
+  const formatarTexto = props.texto.split('\n').map((item, index) => (
+    <span key={index}>
+      {item}
+      <br />
+    </span>
+  ));
+
   return (
     <React.Fragment>
       <Grid container justifyContent="center" alignItems={"flex-start"}>
@@ -65,7 +71,9 @@ export default function SimpleContainer(props) {
         </Grid>
 
         <Grid item xs={6}>
-          <CaixaTexto props={props} />
+          <Box sx={{ fontSize: '23px', bgcolor: 'rgba(3, 3, 3, 0.72)', color: 'white', height: '50vh', width:'100%', borderRadius: 2, border: '2px solid red', overflowY: 'auto' }}>
+            {formatarTexto}
+          </Box>
         </Grid>
 
         <Grid item sx={style} marginLeft={5}>

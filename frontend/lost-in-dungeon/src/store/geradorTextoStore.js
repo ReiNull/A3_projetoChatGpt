@@ -48,12 +48,12 @@ class GeradorTextoStore {
     }
 
     gerarLog(log) {
-        const novoTexto = this.state.logCompleto + ' ||' + log + '||';
+        const novoTexto = this.state.logCompleto + log + '\n';
         this.setLogCompleto(novoTexto); // Atualiza o estado e notifica os ouvintes
     }
 
     gerouCalabouco() {
-        const novoTexto = this.state.logCompleto + ' ||' + logsDefault.LOGS.calabouco_gerado + '||'; 
+        const novoTexto = this.state.logCompleto + logsDefault.LOGS.calabouco_gerado + '\n'; 
         this.setLogCompleto(novoTexto); // Atualiza o estado e notifica os ouvintes
     }
 
@@ -63,6 +63,14 @@ class GeradorTextoStore {
 
     jogadorEscapou() {
         this.gerarLog(logsDefault.LOGS.jogador_escapa_calabouco);
+    }
+
+    descricaoPorChatgptSala(texto) {
+        this.setCarregando(true);
+        this.chatgptStore.retornarDescricao(texto, res => {
+            this.gerarLog('SALA: ' + res);
+            this.setCarregando(false);
+        });
     }
 
     descricaoPorChatgpt(texto) {
