@@ -40,8 +40,8 @@
 body {
   background-image: url('../img/fundoPrincipal.png');
   background-size: cover;
-  background-position: center; /* Centraliza a imagem no container */
-  background-repeat: no-repeat; 
+  background-position: justify;
+  background-repeat: no-repeat center; 
 }
 
 .maldosa {
