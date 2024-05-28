@@ -133,7 +133,7 @@ const constantes = {
     monstros: [
         { 
             status: {
-                vida: 30,
+                vida: 40,
                 ataque: 10,
                 defesa: 15,
                 esquiva: 15,
@@ -143,8 +143,8 @@ const constantes = {
             descricaoChatGpt: 'Descreva um lobisomem :caracteristica, no máximo 20 palavras, texto corrido',
             src: Lobisomem,
             acoesMonstro: [
-                { descricao: 'Mordida', dano: 15, statusDebuff: null, descricaoChatGpt: 'Descreva um lobisomem me mordendo' },
-                { descricao: 'Rosnado', dano: 0, statusDebuff: { ataque: 2, esquiva: 5 }, descricaoChatGpt: 'Descreva um lobisomem rosnando para mim'}
+                { descricao: 'Mordida', dano: 20, statusDebuff: null, descricaoChatGpt: 'Descreva um lobisomem me mordendo' },
+                { descricao: 'Rosnado', dano: 0, statusDebuff: { ataque: 10, esquiva: 10 }, descricaoChatGpt: 'Descreva um lobisomem rosnando para mim'}
             ],
         },
         { 
@@ -160,6 +160,40 @@ const constantes = {
             src: Rato,
             acoesMonstro: [
                 { descricao: 'Mordida', dano: 1, statusDebuff: null, descricaoChatGpt: 'Descreva um Rato me mordendo' },
+            ],
+        },
+        { 
+            status: {
+                vida: 30,
+                ataque: 8,
+                defesa: 8,
+                esquiva: 15,
+            },
+            descricao: 'O Vampiro' ,
+            caracteristicas: ['Sedento', 'Galanteador', 'Safado', 'Brilhante'],
+            descricaoChatGpt: 'Me descreva um Vampiro :caracteristica, no máximo 20 palavras, texto corrido',
+            src: Vampiro,
+            acoesMonstro: [
+                { descricao: 'Sugada', dano: 10, statusDebuff: { defesa: 5 }, descricaoChatGpt: 'Descreva um vampiro sugando meu sangue' },
+                { descricao: 'Seduzir', dano: 0, statusDebuff: { ataque: 5, esquiva: 5 }, descricaoChatGpt: 'Descreva um vampiro me seduzindo' },
+                { descricao: 'Aterrorizar', dano: 0, statusDebuff: { defesa: 10 }, descricaoChatGpt: 'Descreva um vampiro me aterrorizando' },
+            ],
+        },
+        { 
+            status: {
+                vida: 30,
+                ataque: 8,
+                defesa: 8,
+                esquiva: 15,
+            },
+            descricao: 'O Espreitador de vinhas' ,
+            caracteristicas: ['Verde', 'Perigosa', 'Escondida'],
+            descricaoChatGpt: 'Me descreva uma criatura que se esconde em vinhas :caracteristica, no máximo 20 palavras, texto corrido',
+            src: EspreitadorVinhas,
+            acoesMonstro: [
+                { descricao: 'Ataque Surpresa', dano: 20, statusDebuff: null, descricaoChatGpt: 'Descreva uma criatura que se esconde em vinhas me atacando com dentes afiados' },
+                { descricao: 'Emaranhar', dano: 5, statusDebuff: { esquiva: 20 }, descricaoChatGpt: 'Descreva uma criatura que se esconde em vinhas me prendendo com vinhas' },
+                { descricao: 'Camuflagem', dano: 0, statusDebuff: { defesa: 10, esquiva: 10 }, descricaoChatGpt: 'Descreva uma criatura que se esconde em vinhas se escondendo em vinhas' },
             ],
         }
     ],
