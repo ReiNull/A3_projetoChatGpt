@@ -81,7 +81,7 @@ const constantes = {
             },
             resultados: {
                 '1': {resultado: 'PERDER_VIDA', descricao: 'O baú morde seu braço!'},
-                '2': {resultado: 'GANHAR_ITEM', descricao: 'O baú se abre te garantindo uma poção!'},
+                '2': {resultado: 'GANHAR_ITEM', descricao: 'O baú se abre, você encontrou um item!'},
                 '3': {resultado: 'PERDER_VIDA', descricao: 'Ao se afastar o baú acorda e te morde!'},
             }
         },

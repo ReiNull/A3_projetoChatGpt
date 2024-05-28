@@ -8,16 +8,12 @@ class Jogador {
         defesa: 0,
         esquiva: 0,
     };
-
     inventario = [];
-
-    item;
-
+    item = new Item();
     encontrouMonstro = false;
     jogadorMorreu = false;
 
     constructor() {
-        this.item = new Item();
         this.statusOriginal = structuredClone(constantes.jogador.status);
         this.status = structuredClone(constantes.jogador.status);
     }
@@ -61,7 +57,9 @@ class Jogador {
     }
 
     atualizarStatus() {
+        const vidaAtual = this.status.vida;
         this.status = structuredClone(this.statusOriginal);
+        this.status.vida = vidaAtual;
 
         this.inventario.forEach(item => {
             let ataqueBonus = item.status.ataque || 0;
