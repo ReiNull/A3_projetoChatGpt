@@ -41,7 +41,7 @@ class Monstro {
     }
 
     receberDano(dano) {
-        if(dano) {
+        if(dano > 0) {
             this.status.vida -= dano
             this.monstroMorreu = this.status.vida <= 0;
         }
