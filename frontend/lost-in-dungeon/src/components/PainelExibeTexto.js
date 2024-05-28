@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Box, Grid } from '@mui/material';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -31,6 +31,14 @@ const style = {
 };
 
 export default function SimpleContainer(props) {
+  const boxRef = useRef(null);
+
+  useEffect(() => {
+    if (boxRef.current) {
+      boxRef.current.scrollTop = boxRef.current.scrollHeight;
+    }
+  }, [props.texto]); // Reexecuta o efeito quando o texto muda
+
   const formatarTexto = props.texto.split('\n').map((item, index) => (
     <span key={index}>
       {item}
@@ -71,7 +79,7 @@ export default function SimpleContainer(props) {
         </Grid>
 
         <Grid item xs={6}>
-          <Box sx={{ fontSize: '23px', bgcolor: 'rgba(3, 3, 3, 0.72)', color: 'white', height: '50vh', width:'100%', borderRadius: 2, border: '2px solid red', overflowY: 'auto' }}>
+          <Box ref={boxRef} sx={{ fontSize: '23px', bgcolor: 'rgba(3, 3, 3, 0.72)', color: 'white', height: '50vh', width:'100%', borderRadius: 2, border: '2px solid red', overflowY: 'auto' }}>
             {formatarTexto}
           </Box>
         </Grid>
