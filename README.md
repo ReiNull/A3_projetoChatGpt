@@ -28,6 +28,7 @@ Abrir novo terminal
 -cd backend
 -npm install (Baixou projeto pela primeira vez)
 -npm run start:dev
+-criar arquivo .env e usar uma chave válida
 
 Abrir novo terminal
 -cd frontend
