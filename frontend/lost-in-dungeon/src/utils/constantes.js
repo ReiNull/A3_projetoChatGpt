@@ -20,13 +20,51 @@ const constantes = {
             ataque: 20,
             defesa: 10,
             esquiva: 15,
-        }
+        },
         //TO DO: inventario que o jogador adquire no calabouço
+        inventario: []
     },
 
     //TO DO: Itens dentro do calabouço
     items: [
-
+        {
+            descricao: 'Espada Longa',
+            descricaoChatGpt: 'Descreva uma espada longa como se fosse um mestre de RPG com no máximo 13 palavras',
+            status: {
+                ataque: 3,
+                defesa: 1
+            }
+        },
+        {
+            descricao: 'Espada Curta',
+            descricaoChatGpt: 'Descreva uma espada curta como se fosse um mestre de RPG com no máximo 13 palavras',
+            status: {
+                ataque: 2,
+                defesa: 2
+            }
+        },
+        {
+            descricao: 'Arco e Flecha',
+            descricaoChatGpt: 'Descreva um arco e flecha como se fosse um mestre de RPG com no máximo 13 palavras',
+            status: {
+                ataque: 4
+            }
+        },
+        {
+            descricao: 'Escudo de Madeira',
+            descricaoChatGpt: 'Descreva um escudo de madeira como se fosse um mestre de RPG com no máximo 13 palavras',
+            status: {
+                ataque: 1,
+                defesa: 3
+            }
+        },
+        {
+            descricao: 'Armadura',
+            descricaoChatGpt: 'Descreva uma armadura como se fosse um mestre de RPG com no máximo 13 palavras',
+            status: {
+                defesa: 4
+            }
+        }
     ],
 
     //consequencias: ['PERDER_VIDA', 'GANHAR_VIDA', 'ENCONTRO_MONSTRO', 'GANHAR_ITEM', 'NADA'],
@@ -43,7 +81,7 @@ const constantes = {
             },
             resultados: {
                 '1': {resultado: 'PERDER_VIDA', descricao: 'O baú morde seu braço!'},
-                '2': {resultado: 'GANHAR_VIDA', descricao: 'O baú se abre te garantindo uma poção!'},
+                '2': {resultado: 'GANHAR_ITEM', descricao: 'O baú se abre te garantindo uma poção!'},
                 '3': {resultado: 'PERDER_VIDA', descricao: 'Ao se afastar o baú acorda e te morde!'},
             }
         },
