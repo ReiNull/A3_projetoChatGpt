@@ -13,6 +13,7 @@ class Jogador {
     encontrouMonstro = false;
     jogadorMorreu = false;
     esquivou = false;
+    esquivouComSucesso = false;
 
     constructor() {
         this.statusOriginal = structuredClone(constantes.jogador.status);

@@ -60,29 +60,57 @@ class CalaboucoStarterStore {
         }
     }
 
-    calculoCombate(indexAcao) {
+    calculoCombateJogador(indexAcao) {
+        const { monstro } = this.monstrosStore;
         if (indexAcao == 1) {
-            if (this.monstrosStore.monstro.status.esquiva < this._getRandomNumber(99) + 1) {
-                this.geradorTextoStore.gerarLog('Você ataca ' + this.monstrosStore.monstro.descricao + '!!!');
-                let ataqueMD = this.jogador.status.ataque - this.monstrosStore.monstro.status.defesa;
+            if (monstro.status.esquiva < this._getRandomNumber(99) + 1) {
+                let ataqueMD = this.jogador.status.ataque - monstro.status.defesa;
                 if (ataqueMD > 0) {
-                    let danoTotal = (ataqueMD / (this._getRandomNumber(3) + 1)) + this.jogador.status.dano;
-                    this.monstrosStore.monstro.receberDano(Math.abs(danoTotal));
+                    let danoTotal = Math.floor((ataqueMD / (this._getRandomNumber(3) + 1)) + this.jogador.status.dano);
+                    monstro.receberDano(danoTotal);
+
+                    this.geradorTextoStore.gerarLog('Você ataca ' + monstro.descricao + ' causando ' + danoTotal + ' de dano!!!');
+                } else {
+                    this.geradorTextoStore.gerarLog('Você não possui o suficiente de ataque para passar da defesa do monstro!!!');
                 }
-            } else {this.geradorTextoStore.gerarLog('O montro desviou!!');}
+            } else {
+                this.geradorTextoStore.gerarLog(monstro.descricao + ' se esquivou do seu ataque!!!');
+            }
         } else if (indexAcao == 2) {
-            let aumentarDefesa = this.jogador.status.defesa / (this._getRandomNumber(5) + 1);
-            let defesaTotal = aumentarDefesa + this.jogador.status.defesa;
-            this.jogador.status.defesa = Math.floor(defesaTotal);
+            let aumentarDefesa = Math.floor(this.jogador.status.defesa / (this._getRandomNumber(5) + 1));
+            this.jogador.status.defesa += aumentarDefesa;
+
+            this.geradorTextoStore.gerarLog('Sua defesa aumentou em ' + aumentarDefesa + ' pontos!!!');
         } else if (indexAcao == 3) {
             this.jogador.esquivou = true;
+
+            this.geradorTextoStore.gerarLog('Você se prepara para esquivar!!!');
         } else if (indexAcao == 4) {
-            let chanceFugir = Math.floor(((this.jogador.status.esquiva * 2) - (this.monstrosStore.monstro.status.ataque / 2) + (this._getRandomNumber(10) + 1)));
+            let chanceFugir = Math.floor(((this.jogador.status.esquiva * 2) - (monstro.status.ataque / 2) + (this._getRandomNumber(10) + 1)));
             if (chanceFugir > this._getRandomNumber(99) + 1) {
-                this.geradorTextoStore.gerarLog('Você escapou do monstro: ' + this.monstrosStore.monstro.descricao + '!!!');
+                this.geradorTextoStore.gerarLog('Você escapou do monstro: ' + monstro.descricao + '!!!');
+                
                 this.jogador.encontrouMonstro = false;
-                this.monstrosStore.monstro = new Monstro();
+                monstro = new Monstro();
                 this.avancarFase();
+            } else {
+                this.geradorTextoStore.gerarLog('Você não conseguiu escapar do monstro: ' + monstro.descricao + '!!!');
+            }
+        }
+    }
+
+    logConsequencias(acaoMostro) {
+        if(acaoMostro.statusDebuff) {
+            if(acaoMostro.statusDebuff['ataque']) {
+                this.geradorTextoStore.gerarLog('Seu ATAQUE diminuiu em ' + acaoMostro.statusDebuff['ataque'] + ' pontos!!!');
+            }
+                
+            if(acaoMostro.statusDebuff['defesa']) {
+                this.geradorTextoStore.gerarLog('Sua DEFESA diminuiu em ' + acaoMostro.statusDebuff['defesa'] + ' pontos!!!');
+            }
+                
+            if(acaoMostro.statusDebuff['esquiva']) {
+                this.geradorTextoStore.gerarLog('Sua ESQUIVA diminuiu em ' + acaoMostro.statusDebuff['esquiva'] + ' pontos!!!');
             }
         }
     }
@@ -91,38 +119,53 @@ class CalaboucoStarterStore {
         const { monstro } = this.monstrosStore;
         const acaoMostro = monstro.realizarAcao();
         let esquivaTotal = this.jogador.status.esquiva + (this.jogador.status.esquiva * (this._getRandomNumber(3) + 1));
-        let esquivaDefinitiva = this.jogador.esquivou ? esquivaTotal : this.jogador.esquiva;
-            if (esquivaDefinitiva < this._getRandomNumber(99) + 1) {
-                this.geradorTextoStore.gerarLog('O monstro te acertou!!!');
-                let ataqueJD = this.monstrosStore.monstro.status.ataque - this.jogador.status.defesa;
-                if (ataqueJD > 0) {
-                    let danoTotal = (ataqueJD / (this._getRandomNumber(3) + 1)) + this.monstrosStore.monstro.acaoMostro.dano;
-                    this.jogador.receberAcaoMonstro(acaoMostro, Math.abs(danoTotal));
-                }
+        let esquivaDefinitiva = this.jogador.esquivou ? esquivaTotal : this.jogador.status.esquiva;
+
+        this.geradorTextoStore.gerarLog(monstro.descricao + ' usa ' + acaoMostro.descricao + ' em você!');
+
+        if (esquivaDefinitiva < this._getRandomNumber(99) + 1) {
+            let ataqueJD = monstro.status.ataque - this.jogador.status.defesa;
+
+            if (ataqueJD > 0) {
+                let danoTotal = acaoMostro.dano ? Math.floor((ataqueJD / (this._getRandomNumber(3) + 1)) + acaoMostro.dano) : 0;
+                this.jogador.receberAcaoMonstro(acaoMostro, danoTotal);
+
+                this.geradorTextoStore.gerarLog('Você recebeu '+ danoTotal +' de dano!!!');
+                this.logConsequencias(acaoMostro);
             } else {
-                this.geradorTextoStore.gerarLog('Você desviou!');
-                this.jogador.esquivou = false;
+                this.geradorTextoStore.gerarLog(monstro.descricao+ ' não possui o suficiente de ataque para passar das sua defesa!!!');
             }
+        } else {
+            this.jogador.esquivou = false;
+            this.jogador.esquivouComSucesso = true;
+
+            this.geradorTextoStore.gerarLog('Você conseguiu se esquivar da ação do monstro, +1 TURNO EXTRA!!!');
+        }
+
+        if(this.jogador.esquivou) {
+            this.jogador.esquivou = false;
+            this.jogador.esquivouComSucesso = false;
+            this.geradorTextoStore.gerarLog('Você não conseguiu se esquivar!!!');
+        }
     }
 
     combateComMonstro(indexAcao) {
         const { monstro } = this.monstrosStore;
-
-        // monstro.receberDano(this.jogador.status.ataque);
-        // this.geradorTextoStore.gerarLog('Você ataca ' + monstro.descricao + '!!!');
-        // console.log(monstro.status);
-
-        this.calculoCombate(indexAcao);
+        this.calculoCombateJogador(indexAcao);
 
         if (!monstro.monstroMorreu) {
-            const acaoMostro = monstro.realizarAcao();
-            this.jogador.receberAcaoMonstro(acaoMostro);
-            this.geradorTextoStore.gerarLog(monstro.descricao + ' usa ' + acaoMostro.descricao + ' em você!');
+            if(this.jogador.esquivouComSucesso) {
+                this.jogador.esquivouComSucesso = false;
+                this.geradorTextoStore.gerarLog('TURNO EXTRA!!!');
+            } else {
+                this.calcularCombateMonstro();
+            }
 
             if (this.jogador.jogadorMorreu) {
                 this.faseAtual = null;
                 this.jogador.jogadorMorreu = true;
                 this.jogador.encontrouMonstro = false;
+
                 this.geradorTextoStore.jogadorMorreu();
             }
         } else {

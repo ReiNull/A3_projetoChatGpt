@@ -20,7 +20,7 @@ const constantes = {
             ataque: 20,
             dano: 5,
             defesa: 10,
-            esquiva: 15,
+            esquiva: 10,
         },
         //TO DO: inventario que o jogador adquire no calabouço
         inventario: []
@@ -32,38 +32,38 @@ const constantes = {
             descricao: 'Espada Longa',
             descricaoChatGpt: 'Descreva uma espada longa como se fosse um mestre de RPG com no máximo 13 palavras',
             status: {
-                ataque: 3,
-                defesa: 1
+                ataque: 10,
+                defesa: 5
             }
         },
         {
             descricao: 'Espada Curta',
             descricaoChatGpt: 'Descreva uma espada curta como se fosse um mestre de RPG com no máximo 13 palavras',
             status: {
-                ataque: 2,
-                defesa: 2
+                ataque: 5,
+                esquiva: 5
             }
         },
         {
             descricao: 'Arco e Flecha',
             descricaoChatGpt: 'Descreva um arco e flecha como se fosse um mestre de RPG com no máximo 13 palavras',
             status: {
-                ataque: 4
+                ataque: 10
             }
         },
         {
             descricao: 'Escudo de Madeira',
             descricaoChatGpt: 'Descreva um escudo de madeira como se fosse um mestre de RPG com no máximo 13 palavras',
             status: {
-                ataque: 1,
-                defesa: 3
+                ataque: 5,
+                defesa: 5
             }
         },
         {
             descricao: 'Armadura',
             descricaoChatGpt: 'Descreva uma armadura como se fosse um mestre de RPG com no máximo 13 palavras',
             status: {
-                defesa: 4
+                defesa: 10
             }
         }
     ],
@@ -135,9 +135,9 @@ const constantes = {
         { 
             status: {
                 vida: 40,
-                ataque: 10,
-                defesa: 15,
-                esquiva: 10,
+                ataque: 20,
+                defesa: 10,
+                esquiva: 20,
             },
             descricao: 'O Lobisomem' ,
             caracteristicas: ['Raivoso', 'Triste', 'Cansado', 'Louco'],
@@ -165,10 +165,10 @@ const constantes = {
         },
         { 
             status: {
-                vida: 30,
+                vida: 40,
                 ataque: 8,
-                defesa: 8,
-                esquiva: 15,
+                defesa: 10,
+                esquiva: 40,
             },
             descricao: 'O Vampiro' ,
             caracteristicas: ['Sedento', 'Galanteador', 'Safado', 'Brilhante'],
@@ -182,10 +182,10 @@ const constantes = {
         },
         { 
             status: {
-                vida: 30,
-                ataque: 8,
-                defesa: 8,
-                esquiva: 15,
+                vida: 20,
+                ataque: 30,
+                defesa: 25,
+                esquiva: 10,
             },
             descricao: 'O Espreitador de vinhas' ,
             caracteristicas: ['Verde', 'Perigosa', 'Escondida'],
