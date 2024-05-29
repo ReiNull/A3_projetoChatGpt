@@ -3,6 +3,7 @@ import GeradorTextoStore from './geradorTextoStore';
 import MonstrosStore from './monstrosStore';
 import Fase from '../utils/Fase';
 import Jogador from '../utils/Jogador';
+import Monstro from '../utils/Monstro';
 
 class CalaboucoStarterStore {
     qtdFasesTotais = 0;
@@ -28,7 +29,7 @@ class CalaboucoStarterStore {
 
     _indexValido(index, indexMaximo) {
         let indexFinal = index;
-        if(index > indexMaximo || index < 0 || index == undefined) {
+        if (index > indexMaximo || index < 0 || index == undefined) {
             indexFinal = this._getRandomNumber(indexMaximo);
         }
 
@@ -59,19 +60,66 @@ class CalaboucoStarterStore {
         }
     }
 
+    calculoCombate(indexAcao) {
+        if (indexAcao == 1) {
+            if (this.monstrosStore.monstro.status.esquiva < this._getRandomNumber(99) + 1) {
+                this.geradorTextoStore.gerarLog('Você ataca ' + this.monstrosStore.monstro.descricao + '!!!');
+                let ataqueMD = this.jogador.status.ataque - this.monstrosStore.monstro.status.defesa;
+                if (ataqueMD > 0) {
+                    let danoTotal = (ataqueMD / (this._getRandomNumber(3) + 1)) + this.jogador.status.dano;
+                    this.monstrosStore.monstro.receberDano(Math.abs(danoTotal));
+                }
+            } else {this.geradorTextoStore.gerarLog('O montro desviou!!');}
+        } else if (indexAcao == 2) {
+            let aumentarDefesa = this.jogador.status.defesa / (this._getRandomNumber(5) + 1);
+            let defesaTotal = aumentarDefesa + this.jogador.status.defesa;
+            this.jogador.status.defesa = Math.floor(defesaTotal);
+        } else if (indexAcao == 3) {
+            this.jogador.esquivou = true;
+        } else if (indexAcao == 4) {
+            let chanceFugir = Math.floor(((this.jogador.status.esquiva * 2) - (this.monstrosStore.monstro.status.ataque / 2) + (this._getRandomNumber(10) + 1)));
+            if (chanceFugir > this._getRandomNumber(99) + 1) {
+                this.geradorTextoStore.gerarLog('Você escapou do monstro: ' + this.monstrosStore.monstro.descricao + '!!!');
+                this.jogador.encontrouMonstro = false;
+                this.monstrosStore.monstro = new Monstro();
+                this.avancarFase();
+            }
+        }
+    }
+
+    calcularCombateMonstro(){
+        const { monstro } = this.monstrosStore;
+        const acaoMostro = monstro.realizarAcao();
+        let esquivaTotal = this.jogador.status.esquiva + (this.jogador.status.esquiva * (this._getRandomNumber(3) + 1));
+        let esquivaDefinitiva = this.jogador.esquivou ? esquivaTotal : this.jogador.esquiva;
+            if (esquivaDefinitiva < this._getRandomNumber(99) + 1) {
+                this.geradorTextoStore.gerarLog('O monstro te acertou!!!');
+                let ataqueJD = this.monstrosStore.monstro.status.ataque - this.jogador.status.defesa;
+                if (ataqueJD > 0) {
+                    let danoTotal = (ataqueJD / (this._getRandomNumber(3) + 1)) + this.monstrosStore.monstro.acaoMostro.dano;
+                    this.jogador.receberAcaoMonstro(acaoMostro, Math.abs(danoTotal));
+                }
+            } else {
+                this.geradorTextoStore.gerarLog('Você desviou!');
+                this.jogador.esquivou = false;
+            }
+    }
+
     combateComMonstro(indexAcao) {
         const { monstro } = this.monstrosStore;
 
-        monstro.receberDano(this.jogador.status.ataque);
-        this.geradorTextoStore.gerarLog('Você ataca ' + monstro.descricao + '!!!');
-        console.log(monstro.status);
+        // monstro.receberDano(this.jogador.status.ataque);
+        // this.geradorTextoStore.gerarLog('Você ataca ' + monstro.descricao + '!!!');
+        // console.log(monstro.status);
 
-        if(!monstro.monstroMorreu) {
+        this.calculoCombate(indexAcao);
+
+        if (!monstro.monstroMorreu) {
             const acaoMostro = monstro.realizarAcao();
             this.jogador.receberAcaoMonstro(acaoMostro);
             this.geradorTextoStore.gerarLog(monstro.descricao + ' usa ' + acaoMostro.descricao + ' em você!');
-            
-            if(this.jogador.jogadorMorreu) {
+
+            if (this.jogador.jogadorMorreu) {
                 this.faseAtual = null;
                 this.jogador.jogadorMorreu = true;
                 this.jogador.encontrouMonstro = false;
@@ -82,29 +130,29 @@ class CalaboucoStarterStore {
 
             this.monstrosStore.matarMonstro();
             this.jogador.encontrouMonstro = false;
-            this.avancarFase(); 
+            this.avancarFase();
         }
     }
 
     fezEscolhaEmFase(indexAcao) {
         try {
-            if(this.jogador.encontrouMonstro) {
+            if (this.jogador.encontrouMonstro) {
                 this.combateComMonstro(indexAcao);
                 return;
             } else {
                 const consequencia = this.faseAtual.resultados[indexAcao];
                 this.jogador.lidarComConsequencia(consequencia);
-                this.geradorTextoStore.gerarLog('RESULTADO: '+consequencia.descricao); //LOG {Escolha}
+                this.geradorTextoStore.gerarLog('RESULTADO: ' + consequencia.descricao); //LOG {Escolha}
 
-                if(this.jogador.encontrouMonstro && this.monstrosStore.existeMonstros) {
+                if (this.jogador.encontrouMonstro && this.monstrosStore.existeMonstros) {
                     this.monstrosStore.chamarMonstro();
                     return;
-                } else if(consequencia == 'ENCONTRO_MONSTRO') {
+                } else if (consequencia == 'ENCONTRO_MONSTRO') {
                     this.jogador.encontrouMonstro = false;
                     this.geradorTextoStore.semMonstrosDefinitivo(); //LOG {Sem Monstros}
                 }
-                
-                if(this.jogador.jogadorMorreu){
+
+                if (this.jogador.jogadorMorreu) {
                     this.faseAtual = null;
                     this.geradorTextoStore.jogadorMorreu();
                 } else {
@@ -119,7 +167,7 @@ class CalaboucoStarterStore {
     avancarFase() {
         try {
             this.indexfaseAtual += 1;
-            if(this.indexfaseAtual < this.fasesCalabouco.length) {      
+            if (this.indexfaseAtual < this.fasesCalabouco.length) {
                 this.faseAtual = this.fasesCalabouco[this.indexfaseAtual];
 
                 this.geradorTextoStore.gerarLog('Você avança para a sala adiante...'); //LOG {Avanco Fase}
@@ -131,7 +179,7 @@ class CalaboucoStarterStore {
         } catch (error) {
             console.log('Não há mais fases para serem geradas!');
         }
-        
+
     }
 
     get getcalaboucoAcabou() {
@@ -139,7 +187,7 @@ class CalaboucoStarterStore {
     }
 
     get getfaseAtual() {
-       return this.faseAtual;
+        return this.faseAtual;
     }
 
     get getAcoesfase() {

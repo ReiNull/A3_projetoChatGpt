@@ -12,6 +12,7 @@ class Jogador {
     item = new Item();
     encontrouMonstro = false;
     jogadorMorreu = false;
+    esquivou = false;
 
     constructor() {
         this.statusOriginal = structuredClone(constantes.jogador.status);
@@ -46,8 +47,8 @@ class Jogador {
         }
     }
 
-    receberAcaoMonstro(acaoMostro) {
-        this.status.vida -= acaoMostro.dano;
+    receberAcaoMonstro(acaoMostro, dano) {
+        this.status.vida -= dano;
         if(acaoMostro.statusDebuff) {
             this.status.ataque -= acaoMostro.statusDebuff['ataque'] ? acaoMostro.statusDebuff['ataque'] : 0;
             this.status.defesa -= acaoMostro.statusDebuff['defesa'] ? acaoMostro.statusDebuff['defesa'] : 0;

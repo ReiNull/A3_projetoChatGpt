@@ -18,6 +18,7 @@ const constantes = {
         status: {
             vida: 30,
             ataque: 20,
+            dano: 5,
             defesa: 10,
             esquiva: 15,
         },
@@ -136,7 +137,7 @@ const constantes = {
                 vida: 40,
                 ataque: 10,
                 defesa: 15,
-                esquiva: 15,
+                esquiva: 10,
             },
             descricao: 'O Lobisomem' ,
             caracteristicas: ['Raivoso', 'Triste', 'Cansado', 'Louco'],

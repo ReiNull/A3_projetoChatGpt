@@ -48,7 +48,7 @@ class MonstrosStore {
     _gerarMonstros() {
         try {
             for (let index = 0; index < this.qtdMonstrosTotais; index++) {
-                this._criarMonstro('NORMAL');
+                this._criarMonstro('NORMAL', 0);
             }
             this._criarMonstro('ESPECIAL');
         } catch (error) {
