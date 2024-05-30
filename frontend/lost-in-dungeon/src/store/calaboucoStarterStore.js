@@ -173,6 +173,7 @@ class CalaboucoStarterStore {
             this.geradorTextoStore.gerarLog('VOCÊ MATOU ' + monstro.descricao.toUpperCase() + '!!!');
 
             this.monstrosStore.matarMonstro();
+            this.jogador.atualizarStatus();
             this.jogador.encontrouMonstro = false;
             this.avancarFase();
         }
