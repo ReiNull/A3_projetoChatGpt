@@ -77,7 +77,7 @@ class CalaboucoStarterStore {
                 this.geradorTextoStore.gerarLog(monstro.descricao + ' se esquivou do seu ataque!!!');
             }
         } else if (indexAcao == 2) {
-            const defesa = this.jogador.status.defesa > 0 ? this.jogador.status.defesa : 10;
+            const defesa = this.jogador.status.defesa > 0 ? this.jogador.status.defesa : constantes.jogador.status.defesa;
             let aumentarDefesa = Math.floor(defesa / (this._getRandomNumber(5) + 1));
             this.jogador.status.defesa += aumentarDefesa;
 
@@ -132,7 +132,7 @@ class CalaboucoStarterStore {
                 danoTotal = acaoMostro.dano ? Math.floor((ataqueJD / (this._getRandomNumber(3) + 1)) + acaoMostro.dano) : 0;
                 this.geradorTextoStore.gerarLog('Você recebeu '+ danoTotal +' de dano!!!');
             } else {
-                this.geradorTextoStore.gerarLog('Sua defesa reduziu o ataque para 0 de dano!!!');
+                this.geradorTextoStore.gerarLog('Sua defesa reduziu o ataque do monstro para 0 de dano!!!');
             }
             this.jogador.receberAcaoMonstro(acaoMostro, danoTotal);
             this.logConsequencias(acaoMostro);
