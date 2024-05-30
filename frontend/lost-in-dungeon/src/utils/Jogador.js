@@ -55,7 +55,7 @@ class Jogador {
             this.status.defesa -= acaoMostro.statusDebuff['defesa'] ? acaoMostro.statusDebuff['defesa'] : 0;
             this.status.esquiva -= acaoMostro.statusDebuff['esquiva'] ? acaoMostro.statusDebuff['esquiva'] : 0;
         }
-        this.jogadorMorreu = this.status.vida <= 0;
+        this.jogadorMorreu = this.status.vida <= 0 || this.status.ataque <= -50 || this.status.defesa <= -50 || this.status.esquiva <= -50;
     }
 
     atualizarStatus() {
