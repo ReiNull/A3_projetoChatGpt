@@ -7,25 +7,30 @@ import JogoPage from './JogoPage';
 class Selecionador extends React.Component {
     constructor() {
         super();
-        this.state = { value: 0 };
+        this.state = { value: 'config' };
 
         this.handleChange = this.handleChange.bind(this);
+        this.encerrarJogo = this.encerrarJogo.bind(this);
     }
 
     handleChange(event, newValue) {
         this.setState({ value: newValue });
     }
 
+    encerrarJogo() {
+        this.setState({ value: 'config' });
+    }
+
     render() {
         const renderizao = {
-            '0': <Grid sx={{ color: 'red', fontSize: '70px' }} item xs={12}>LOST IN DUNGEON</Grid>,
-            '1': <JogoPage fasesTotais={50}/>
+            'config': <Grid sx={{ color: 'red', fontSize: '70px' }} item xs={12}>LOST IN DUNGEON</Grid>,
+            'jogo': <JogoPage fasesTotais={50} encerrarJogo={this.encerrarJogo}/>
         }
         return (
             <>
-                <Tabs sx={{ backgroundColor: 'white' }} textColor="secondary" indicatorColor="secondary" aria-label="secondary tabs example" value={this.state.value} onChange={this.handleChange} centered>
-                    <Tab label="Configuração" />
-                    <Tab label="Jogo"/>
+                <Tabs sx={{ backgroundColor: 'white' }} textColor="secondary" indicatorColor="secondary" value={this.state.value} onChange={this.handleChange} centered>
+                    <Tab value="config" label="Configuração" />
+                    <Tab value="jogo" label="Jogo"/>
                 </Tabs>
                 {renderizao[this.state.value]}
             </>

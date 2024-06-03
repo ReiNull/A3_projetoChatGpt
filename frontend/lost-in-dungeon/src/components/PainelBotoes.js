@@ -54,7 +54,14 @@ export default function NestedGrid(props) {
                         ) : null}
                     </Grid>
                 </>
-            ) } 
+            ) }
+            {!props.acoes ? (
+                <Grid justifyContent="center" alignItems="center" container item spacing={3}>
+                    <Grid item xs={5}>
+                        <Button onClick={()=>props.encerrarJogo()} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '46px', backgroundColor:'black', marginBottom: '40px' }}>ENCERRAR JOGO</Button>
+                    </Grid>
+                </Grid>
+            ):null} 
         </Grid>
     );
 }

@@ -55,7 +55,7 @@ class JogoPage extends React.Component {
                         <PainelExibeTexto statusJogador={this.calaboucoStarterStore.jogador} statusMonstro={this.monstrosStore.getMonstro} texto={this.state.logCompleto} />
                     </Grid>
                     <Grid container item sx={{marginTop: '50px'}} justifyContent="center" alignItems={"center"}>
-                        <PainelBotoes acoes={this.calaboucoStarterStore.getAcoesfase} statusJogador={this.calaboucoStarterStore.jogador} clique={this.receberEscolha} carregando={this.state.carregando} />
+                        <PainelBotoes encerrarJogo={this.props.encerrarJogo} acoes={this.calaboucoStarterStore.getAcoesfase} statusJogador={this.calaboucoStarterStore.jogador} clique={this.receberEscolha} carregando={this.state.carregando} />
                     </Grid>
                 </Grid>
             </Grid>
