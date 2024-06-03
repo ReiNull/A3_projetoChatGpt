@@ -54,7 +54,7 @@ class CalaboucoStarterStore {
                 this._criarFase();
             }
 
-            this.geradorTextoStore.gerouCalabouco(); //LOG {Gerou Calabouco}
+            this.geradorTextoStore.gerouCalabouco();
             this.avancarFase(); // Avancar para a primeira fase da lista de fases totai geradas anteriormente.
         } catch (error) {
             console.log(error, 'Erro ao montar calabouço!');
@@ -189,7 +189,7 @@ class CalaboucoStarterStore {
                 return;
             } else {
                 const consequencia = this.faseAtual.resultados[indexAcao];
-                this.geradorTextoStore.gerarLog('RESULTADO: ' + consequencia.descricao); //LOG {Escolha}
+                this.geradorTextoStore.gerarLog('RESULTADO: ' + consequencia.descricao);
 
                 this.jogador.lidarComConsequencia(consequencia);
 
@@ -198,7 +198,7 @@ class CalaboucoStarterStore {
                     return;
                 } else if (consequencia == 'ENCONTRO_MONSTRO') {
                     this.jogador.encontrouMonstro = false;
-                    this.geradorTextoStore.semMonstrosDefinitivo(); //LOG {Sem Monstros}
+                    this.geradorTextoStore.semMonstrosDefinitivo();
                 }
 
                 if (this.jogador.jogadorMorreu) {
@@ -219,11 +219,11 @@ class CalaboucoStarterStore {
             if (this.indexfaseAtual < this.fasesCalabouco.length) {
                 this.faseAtual = this.fasesCalabouco[this.indexfaseAtual];
 
-                this.geradorTextoStore.gerarLog('Você avança para a sala adiante...'); //LOG {Avanco Fase}
-                this.geradorTextoStore.descricaoPorChatgptSala(this.faseAtual.descricaoChatGpt); //LOG {Fase Descricao}
+                this.geradorTextoStore.gerarLog('Você avança para a sala adiante...');
+                this.geradorTextoStore.descricaoPorChatgptSala(this.faseAtual.descricaoChatGpt);
             } else {
                 this.faseAtual = null;
-                this.geradorTextoStore.jogadorEscapou(); //LOG {Escapou}
+                this.geradorTextoStore.jogadorEscapou();
             }
         } catch (error) {
             console.log('Não há mais fases para serem geradas!');
