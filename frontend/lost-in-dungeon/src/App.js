@@ -1,12 +1,12 @@
 import React from 'react';
-import JogoPage from './views/telaJogo/JogoPage';
+import Selecionador from './views/telaJogo/Selecionador';
 import './css/App.css';
 class App extends React.Component {
 
   render() {
     return (
       <div className="App">
-        <JogoPage fasesTotais={50} />
+        <Selecionador />
       </div>
     );
   }
