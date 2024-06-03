@@ -5,8 +5,9 @@ import Vampiro from '../img/vampiro.png';
 import Morte from '../img/morte.png';
 import Coelho from '../img/coelho.png';
 
+const padraoChatGpt = ', no presente, no máximo 20 palavras, texto corrido';
 
-const constantes = {
+const global = {
     STATUS_DEBUFF: { 
         menosDefesa: 'DEFESA',
         menosDano: 'DANO',
@@ -68,13 +69,11 @@ const constantes = {
         }
     ],
 
-    //consequencias: ['PERDER_VIDA', 'GANHAR_VIDA', 'ENCONTRO_MONSTRO', 'GANHAR_ITEM', 'NADA'],
-
     // Possíveis fases do jogo
     fases: [
         { 
             descricao: 'Sala com Baú monstruoso' ,
-            descricaoChatGpt: 'Descreva uma sala com Baú monstruoso, no presente, no máximo 20 palavras, texto corrido',
+            descricaoChatGpt: 'Descreva uma sala com Baú monstruoso' + padraoChatGpt,
             escolhas: {
                 '1': 'Abrir Baú',
                 '2': 'Chutar Baú',
@@ -88,7 +87,7 @@ const constantes = {
         },
         { 
             descricao: 'Sala com Neblina tendo uma porta no final' ,
-            descricaoChatGpt: 'Descreva uma sala assustadora com neblina com uma porta no final, no presente, no máximo 20 palavras, texto corrido',
+            descricaoChatGpt: 'Descreva uma sala assustadora com neblina com uma porta no final' + padraoChatGpt,
             escolhas: {
                 '1': 'Ir até a porta',
                 '2': 'Esperar neblina sumir',
@@ -100,7 +99,7 @@ const constantes = {
         },
         { 
             descricao: 'Sala escura' ,
-            descricaoChatGpt: 'Descreva uma sala escura com barulhos horripilantes sem fim aparente, no presente, no máximo 20 palavras, texto corrido',
+            descricaoChatGpt: 'Descreva uma sala escura com barulhos horripilantes sem fim aparente' + padraoChatGpt,
             escolhas: {
                 '1': 'Atravessar Correndo',
                 '2': 'Atravessar Andando',
@@ -116,7 +115,7 @@ const constantes = {
         },
         { 
             descricao: 'Sala com armadilhas' ,
-            descricaoChatGpt: 'Descreva uma sala cheia de sangue com armadilhas no chão tendo um corredor no final, no presente, no máximo 20 palavras, texto corrido',
+            descricaoChatGpt: 'Descreva uma sala cheia de sangue com armadilhas no chão tendo um corredor no final' + padraoChatGpt,
             escolhas: {
                 '1': 'Contornar armadilhas',
                 '2': 'Escalar parede lateral',
@@ -141,11 +140,11 @@ const constantes = {
             },
             descricao: 'O Lobisomem' ,
             caracteristicas: ['Raivoso', 'Triste', 'Cansado', 'Louco'],
-            descricaoChatGpt: 'Descreva um lobisomem :caracteristica, no máximo 20 palavras, texto corrido',
+            descricaoChatGpt: 'Descreva um lobisomem :caracteristica' + padraoChatGpt,
             src: Lobisomem,
             acoesMonstro: [
-                { descricao: 'Mordida', dano: 20, statusDebuff: null, descricaoChatGpt: 'Descreva um lobisomem me mordendo' },
-                { descricao: 'Rosnado', dano: 0, statusDebuff: { ataque: 10, esquiva: 10 }, descricaoChatGpt: 'Descreva um lobisomem rosnando para mim'}
+                { descricao: 'Mordida', dano: 20, statusDebuff: null, descricaoChatGpt: 'Descreva um lobisomem me mordendo' + padraoChatGpt},
+                { descricao: 'Rosnado', dano: 0, statusDebuff: { ataque: 10, esquiva: 10 }, descricaoChatGpt: 'Descreva um lobisomem rosnando para mim' + padraoChatGpt}
             ],
         },
         { 
@@ -157,10 +156,10 @@ const constantes = {
             },
             descricao: 'O Rato' ,
             caracteristicas: ['Raivoso', 'Triste', 'Cansado', 'Louco'],
-            descricaoChatGpt: 'Me descreva um Rato :caracteristica, no máximo 20 palavras, texto corrido',
+            descricaoChatGpt: 'Me descreva um Rato :caracteristica' + padraoChatGpt,
             src: Rato,
             acoesMonstro: [
-                { descricao: 'Mordida', dano: 1, statusDebuff: null, descricaoChatGpt: 'Descreva um Rato me mordendo' },
+                { descricao: 'Mordida', dano: 1, statusDebuff: null, descricaoChatGpt: 'Descreva um Rato me mordendo' + padraoChatGpt },
             ],
         },
         { 
@@ -172,12 +171,12 @@ const constantes = {
             },
             descricao: 'O Vampiro' ,
             caracteristicas: ['Sedento', 'Galanteador', 'Safado', 'Brilhante'],
-            descricaoChatGpt: 'Me descreva um Vampiro :caracteristica, no máximo 20 palavras, texto corrido',
+            descricaoChatGpt: 'Me descreva um Vampiro :caracteristica' + padraoChatGpt,
             src: Vampiro,
             acoesMonstro: [
-                { descricao: 'Sugada', dano: 10, statusDebuff: { defesa: 5 }, descricaoChatGpt: 'Descreva um vampiro sugando meu sangue' },
-                { descricao: 'Seduzir', dano: 0, statusDebuff: { ataque: 5, esquiva: 5 }, descricaoChatGpt: 'Descreva um vampiro me seduzindo' },
-                { descricao: 'Aterrorizar', dano: 0, statusDebuff: { defesa: 10 }, descricaoChatGpt: 'Descreva um vampiro me aterrorizando' },
+                { descricao: 'Sugada', dano: 10, statusDebuff: { defesa: 5 }, descricaoChatGpt: 'Descreva um vampiro sugando meu sangue' + padraoChatGpt },
+                { descricao: 'Seduzir', dano: 0, statusDebuff: { ataque: 5, esquiva: 5 }, descricaoChatGpt: 'Descreva um vampiro me seduzindo' + padraoChatGpt },
+                { descricao: 'Aterrorizar', dano: 0, statusDebuff: { defesa: 10 }, descricaoChatGpt: 'Descreva um vampiro me aterrorizando' + padraoChatGpt },
             ],
         },
         { 
@@ -189,12 +188,12 @@ const constantes = {
             },
             descricao: 'O Espreitador de vinhas' ,
             caracteristicas: ['Verde', 'Perigosa', 'Escondida'],
-            descricaoChatGpt: 'Me descreva uma criatura que se esconde em vinhas :caracteristica, no máximo 20 palavras, texto corrido',
+            descricaoChatGpt: 'Me descreva uma criatura que se esconde em vinhas :caracteristica' + padraoChatGpt,
             src: EspreitadorVinhas,
             acoesMonstro: [
-                { descricao: 'Ataque Surpresa', dano: 20, statusDebuff: null, descricaoChatGpt: 'Descreva uma criatura que se esconde em vinhas me atacando com dentes afiados' },
-                { descricao: 'Emaranhar', dano: 5, statusDebuff: { esquiva: 20 }, descricaoChatGpt: 'Descreva uma criatura que se esconde em vinhas me prendendo com vinhas' },
-                { descricao: 'Camuflagem', dano: 0, statusDebuff: { defesa: 10, esquiva: 10 }, descricaoChatGpt: 'Descreva uma criatura que se esconde em vinhas se escondendo em vinhas' },
+                { descricao: 'Ataque Surpresa', dano: 20, statusDebuff: null, descricaoChatGpt: 'Descreva uma criatura que se esconde em vinhas me atacando com dentes afiados' + padraoChatGpt },
+                { descricao: 'Emaranhar', dano: 5, statusDebuff: { esquiva: 20 }, descricaoChatGpt: 'Descreva uma criatura que se esconde em vinhas me prendendo com vinhas' + padraoChatGpt },
+                { descricao: 'Camuflagem', dano: 0, statusDebuff: { defesa: 10, esquiva: 10 }, descricaoChatGpt: 'Descreva uma criatura que se esconde em vinhas se escondendo em vinhas' + padraoChatGpt },
             ],
         }
     ],
@@ -209,14 +208,14 @@ const constantes = {
             },
             descricao: 'A Morte' ,
             caracteristicas: ['Aterrorizante'],
-            descricaoChatGpt: 'Me descreva a morte emcapuzada :caracteristica, no máximo 20 palavras, texto corrido',
+            descricaoChatGpt: 'Me descreva a morte emcapuzada :caracteristica' + padraoChatGpt,
             src: Morte,
             acoesMonstro: [
-                { descricao: 'Matar', dano: 999, statusDebuff: null, descricaoChatGpt: 'Descreva um ceifador colhendo almas' },
+                { descricao: 'Matar', dano: 999, statusDebuff: null, descricaoChatGpt: 'Descreva um ceifador colhendo almas' + padraoChatGpt },
             ],
         },
     ]
     
 }
 
-export default constantes;
+export default global;

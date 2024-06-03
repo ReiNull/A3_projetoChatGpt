@@ -49,12 +49,12 @@ class GeradorTextoStore {
 
     gerarLog(log) {
         const novoTexto = this.state.logCompleto + log + '\n';
-        this.setLogCompleto(novoTexto); // Atualiza o estado e notifica os ouvintes
+        this.setLogCompleto(novoTexto);
     }
 
     gerouCalabouco() {
         const novoTexto = this.state.logCompleto + logsDefault.LOGS.calabouco_gerado + '\n'; 
-        this.setLogCompleto(novoTexto); // Atualiza o estado e notifica os ouvintes
+        this.setLogCompleto(novoTexto);
     }
 
     jogadorMorreu() {

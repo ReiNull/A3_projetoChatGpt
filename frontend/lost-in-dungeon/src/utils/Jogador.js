@@ -1,4 +1,5 @@
-import constantes from '../utils/constantes';
+import global from './global';
+import GeradorTextoStore from '../store/geradorTextoStore';
 import Item from './Item'
 
 class Jogador {
@@ -14,10 +15,13 @@ class Jogador {
     jogadorMorreu = false;
     esquivou = false;
     esquivouComSucesso = false;
+    geradorTextoStore = new GeradorTextoStore();
 
-    constructor() {
-        this.statusOriginal = structuredClone(constantes.jogador.status);
-        this.status = structuredClone(constantes.jogador.status);
+    constructor(geradorTextoStore) {
+        this.geradorTextoStore = geradorTextoStore;
+
+        this.statusOriginal = structuredClone(global.jogador.status);
+        this.status = structuredClone(global.jogador.status);
     }
 
     receberDano(dano) {
@@ -31,8 +35,10 @@ class Jogador {
 
     ganharItem() {
         const novoItem = this.item.carregarItemAleatorio();
-        this.inventario.push(novoItem);
 
+        //this.geradorTextoStore.descricaoPorChatgpt(novoItem.descricaoChatGpt);
+        this.geradorTextoStore.gerarLog('Você adiciona ' + novoItem.descricao + ' ao seu inventário!');
+        this.inventario.push(novoItem);
         this.atualizarStatus();        
     }
 

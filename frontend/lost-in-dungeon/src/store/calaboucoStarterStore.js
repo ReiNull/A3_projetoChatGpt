@@ -1,4 +1,4 @@
-import constantes from '../utils/constantes';
+import global from '../utils/global';
 import GeradorTextoStore from './geradorTextoStore';
 import MonstrosStore from './monstrosStore';
 import Fase from '../utils/Fase';
@@ -14,9 +14,10 @@ class CalaboucoStarterStore {
     faseAtual = new Fase();
     jogador = new Jogador();
 
-    constructor(geradorTextoStore, monstrosStore, qtdfases) {
+    constructor(geradorTextoStore, monstrosStore, jogador, qtdfases) {
         this.geradorTextoStore = geradorTextoStore;
         this.monstrosStore = monstrosStore;
+        this.jogador = jogador;
         this.qtdFasesTotais = qtdfases;
 
         this.monstrosStore._gerarMonstros();
@@ -38,8 +39,8 @@ class CalaboucoStarterStore {
 
     _criarFase(indexFase) {
         try {
-            indexFase = this._indexValido(indexFase, constantes.fases.length);
-            const fase = new Fase(structuredClone(constantes.fases[indexFase]));
+            indexFase = this._indexValido(indexFase, global.fases.length);
+            const fase = new Fase(structuredClone(global.fases[indexFase]));
             this.fasesCalabouco.push(fase);
         } catch (error) {
             console.log(error, 'Erro ao gerar fase!');
@@ -77,7 +78,7 @@ class CalaboucoStarterStore {
                 this.geradorTextoStore.gerarLog(monstro.descricao + ' se esquivou do seu ataque!!!');
             }
         } else if (indexAcao == 2) {
-            const defesa = this.jogador.status.defesa > 0 ? this.jogador.status.defesa : constantes.jogador.status.defesa;
+            const defesa = this.jogador.status.defesa > 0 ? this.jogador.status.defesa : global.jogador.status.defesa;
             let aumentarDefesa = Math.floor(defesa / (this._getRandomNumber(5) + 1));
             this.jogador.status.defesa += aumentarDefesa;
 
@@ -125,6 +126,8 @@ class CalaboucoStarterStore {
         this.geradorTextoStore.gerarLog(monstro.descricao + ' usa ' + acaoMostro.descricao + ' em você!');
 
         if (esquivaDefinitiva < this._getRandomNumber(99) + 1) {
+            this.geradorTextoStore.descricaoPorChatgpt(acaoMostro.descricaoChatGpt);
+
             let ataqueJD = monstro.status.ataque - this.jogador.status.defesa;
             let danoTotal = 0;
 
@@ -186,8 +189,9 @@ class CalaboucoStarterStore {
                 return;
             } else {
                 const consequencia = this.faseAtual.resultados[indexAcao];
-                this.jogador.lidarComConsequencia(consequencia);
                 this.geradorTextoStore.gerarLog('RESULTADO: ' + consequencia.descricao); //LOG {Escolha}
+
+                this.jogador.lidarComConsequencia(consequencia);
 
                 if (this.jogador.encontrouMonstro && this.monstrosStore.existeMonstros) {
                     this.monstrosStore.chamarMonstro();

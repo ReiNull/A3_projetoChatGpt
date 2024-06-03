@@ -1,4 +1,4 @@
-import constantes from '../utils/constantes';
+import global from './global';
 import Jogador from './Jogador';
 
 class Item {
@@ -8,14 +8,14 @@ class Item {
 
 
     getRandomNumber() {
-        return Math.floor(Math.random() * constantes.items.length);
+        return Math.floor(Math.random() * global.items.length);
     }
 
     carregarItemAleatorio() {
         const itemAleatorio = this.getRandomNumber()
 
-        if (itemAleatorio < constantes.items.length) {
-            let item = constantes.items[itemAleatorio];
+        if (itemAleatorio < global.items.length) {
+            let item = global.items[itemAleatorio];
 
             this.descricao = item.descricao;
             this.descricaoChatGpt = item.descricaoChatGpt;

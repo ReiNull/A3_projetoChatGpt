@@ -1,4 +1,4 @@
-import constantes from '../utils/constantes';
+import global from '../utils/global';
 import GeradorTextoStore from './geradorTextoStore';
 import Monstro from '../utils/Monstro';
 
@@ -31,13 +31,13 @@ class MonstrosStore {
         try {
             if(tipo == 'NORMAL') {
 
-                indexMonstro = this._indexValido(indexMonstro, constantes.monstros.length);
-                const monstro = new Monstro(structuredClone(constantes.monstros[indexMonstro]));
+                indexMonstro = this._indexValido(indexMonstro, global.monstros.length);
+                const monstro = new Monstro(structuredClone(global.monstros[indexMonstro]));
                 this.monstrosCalabouco.push(monstro);
             } else if (tipo == 'ESPECIAL') {
     
-                indexMonstro = this._indexValido(indexMonstro, constantes.monstrosEspeciais.length);
-                const monstro = new Monstro(structuredClone(constantes.monstrosEspeciais[indexMonstro]));
+                indexMonstro = this._indexValido(indexMonstro, global.monstrosEspeciais.length);
+                const monstro = new Monstro(structuredClone(global.monstrosEspeciais[indexMonstro]));
                 this.monstrosCalabouco.push(monstro);
             }
         } catch (error) {

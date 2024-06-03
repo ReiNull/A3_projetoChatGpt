@@ -1,4 +1,4 @@
-import constantes from '../utils/constantes';
+import global from './global';
 
 class Fase {
     descricao = '**NULL**';
