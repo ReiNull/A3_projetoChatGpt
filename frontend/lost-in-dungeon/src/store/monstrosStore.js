@@ -52,7 +52,10 @@ class MonstrosStore {
             for (let index = 0; index < this.qtdMonstrosTotais; index++) {
                 this._criarMonstro('NORMAL');
             }
-            //this._criarMonstro('ESPECIAL');
+
+            if(this.especial) {
+                this._criarMonstro('ESPECIAL');
+            }
         } catch (error) {
             console.log(error, 'Erro ao gerar monstros!');
         }
