@@ -72,9 +72,11 @@ class Jogador {
         this.inventario.forEach(item => {
             let ataqueBonus = item.status.ataque || 0;
             let defesaBonus = item.status.defesa || 0;
+            let esquivaBonus = item.status.esquiva || 0;
     
             this.status.ataque += ataqueBonus;
             this.status.defesa += defesaBonus;
+            this.status.esquiva += esquivaBonus;
         });
     }
 }
