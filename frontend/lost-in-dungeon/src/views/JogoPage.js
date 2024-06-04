@@ -55,7 +55,7 @@ class JogoPage extends React.Component {
                     <Grid sx={{ color: 'red', fontSize: '70px' }} item xs={12}>LOST IN DUNGEON</Grid>
                     <Grid sx={{ color: 'red', fontSize: '25px' }} item xs={12}>Salas restantes: {this.calaboucoStarterStore.salasRestantes} Estado: {this.state.carregando ? 'Carregando' : 'Pronto'}</Grid>
                     <Grid item sx={{marginTop: '10px'}}>
-                        <PainelExibeTexto statusJogador={this.calaboucoStarterStore.jogador} statusMonstro={this.monstrosStore.getMonstro} texto={this.state.logCompleto} />
+                        <PainelExibeTexto inventarioJogador={this.jogador.inventario} statusJogador={this.calaboucoStarterStore.jogador} statusMonstro={this.monstrosStore.getMonstro} texto={this.state.logCompleto} />
                     </Grid>
                     <Grid container item sx={{marginTop: '50px'}} justifyContent="center" alignItems={"center"}>
                         <PainelBotoes encerrarJogo={this.props.encerrarJogo} acoes={this.calaboucoStarterStore.getAcoesfase} statusJogador={this.calaboucoStarterStore.jogador} clique={this.receberEscolha} carregando={this.state.carregando} />

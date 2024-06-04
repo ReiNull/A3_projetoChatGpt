@@ -3,6 +3,7 @@ import { Box, Grid } from '@mui/material';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import ControledOpenSelect from './ControledOpenSelect';
 import Divider from '@mui/material/Divider';
 
 import Imagem from './Imagem';
@@ -55,6 +56,9 @@ export default function SimpleContainer(props) {
               <ListItemText primary="STATUS" />
             </ListItem>
             <Divider component="li" />
+            <ListItem>
+              <ControledOpenSelect lista={props.inventarioJogador}/>
+            </ListItem>
             <ListItem>
               <Icone src={Vida} />
               <ListItemText primary={`Vida: ${props.statusJogador.status.vida}`}/>
