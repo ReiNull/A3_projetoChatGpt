@@ -26,10 +26,13 @@ export default function Configuracoes(props) {
         }}
       >
         <Grid>
-          <Button onClick={()=>props.clique(20, 5)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px', backgroundColor:'black' }}>Fácil: 20 Fases 5 Monstros</Button>
-          <Button onClick={()=>props.clique(30, 10)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px', backgroundColor:'black' }}>Médio: 30 Fases 10 Monstros</Button>
-          <Button onClick={()=>props.clique(40, 20)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px', backgroundColor:'black' }}>Difícil: 40 Fases 20 Monstros</Button>
-          <FormControlLabel onChange={(e) => props.checkbox(e.target.checked) } control={<Checkbox defaultChecked color='error'/>} sx={{ color: 'white' }} label="Monstros Especiais" />
+          <Grid sx={{ color: 'red', fontSize: '45px' }} item xs={12}>Dificuldade</Grid>
+          <Grid item xs={12}> 
+            <Button onClick={()=>props.clique(25, 5)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px', backgroundColor:'black' }}>Fácil: 25 Fases 5 Monstros</Button>
+            <Button onClick={()=>props.clique(50, 15)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px', backgroundColor:'black' }}>Médio: 50 Fases 15 Monstros</Button>
+            <Button onClick={()=>props.clique(75, 45)} color="error" variant="outlined" sx={{ width: '100%', fontFamily: 'VT323', color: 'white', fontSize: '23px', backgroundColor:'black' }}>Difícil: 75 Fases 45 Monstros</Button>
+            <FormControlLabel onChange={(e) => props.checkbox(e.target.checked) } control={<Checkbox defaultChecked color='error'/>} sx={{ color: 'white' }} label="Monstros Especiais" />
+          </Grid>
         </Grid>
       </Grid>
     </>
