@@ -51,7 +51,7 @@ class CalaboucoStarterStore {
         try {
             //Gera as fases do calabouço baseado na quantidade totais de fases informadas.
             for (let index = 0; index < this.qtdFasesTotais; index++) {
-                this._criarFase();
+                this._criarFase(1);
             }
 
             this.geradorTextoStore.gerouCalabouco();
