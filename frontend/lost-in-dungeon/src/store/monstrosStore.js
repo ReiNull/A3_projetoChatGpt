@@ -60,7 +60,6 @@ class MonstrosStore {
                     this._criarMonstro('ESPECIAL');
                 }
             }
-            console.log(this.monstrosCalabouco);
         } catch (error) {
             console.log(error, 'Erro ao gerar monstros!');
         }

@@ -1,6 +1,6 @@
 const logsDefault = {
     LOGS: { 
-        calabouco_gerado: 'O Calabouço Perdido aparece diante de você!!!',
+        calabouco_gerado: 'O Calabouço Perdido surge à sua frente. Avance pelas salas e tente escapar!!!',
         calabouco_gerado_erro: 'A magia antiga falhou em gerar o calabouço...',
         jogador_adentra_calabouco: 'VOCE ADENTRA NO CALABOUÇO PERDIDO EM BUSCA DE MORTE E SANGUE!!! \n',
         jogador_morre: 'VOCÊ MORREU NO CALABOUÇO PERDIDO!!!',
