@@ -5,14 +5,16 @@ import Monstro from '../utils/Monstro';
 class MonstrosStore {
     geradorTextoStore = new GeradorTextoStore();
     qtdMonstrosTotais = 1;
+    qtdMonstrosETotais = 1;
     monstrosCalabouco = [];
     monstro = new Monstro();
     monstroIndex = undefined;
     especial = false;
 
-    constructor(geradorTextoStore, qtdMonstrosTotais, especial) {
+    constructor(geradorTextoStore, qtdMonstrosTotais, qtdMonstrosETotais, especial) {
         this.geradorTextoStore = geradorTextoStore;
         this.qtdMonstrosTotais = qtdMonstrosTotais;
+        this.qtdMonstrosETotais = qtdMonstrosETotais;
         this.especial = especial;
     }
 
@@ -54,8 +56,11 @@ class MonstrosStore {
             }
 
             if(this.especial) {
-                this._criarMonstro('ESPECIAL');
+                for (let index = 0; index < this.qtdMonstrosETotais; index++) {
+                    this._criarMonstro('ESPECIAL');
+                }
             }
+            console.log(this.monstrosCalabouco);
         } catch (error) {
             console.log(error, 'Erro ao gerar monstros!');
         }
@@ -79,9 +84,7 @@ class MonstrosStore {
         }
 
         if(!this.monstrosCalabouco.length) {
-            if(this.especial) {
-                this._criarMonstro('ESPECIAL', 0);
-            }
+            this._criarMonstro('ESPECIAL', 0); // O monstro especial 0(Morte) é criado quando não há monstros no calabouço, independente de 'monstros especiais' ter sido marcado ou não na tela de dificuldade.
             this.geradorTextoStore.semMonstros();
         }
     }

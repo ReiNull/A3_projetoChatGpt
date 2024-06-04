@@ -12,7 +12,7 @@ class JogoPage extends React.Component {
     constructor(props) {
         super(props);
         this.geradorTextoStore = new GeradorTextoStore();
-        this.monstrosStore = new MonstrosStore(this.geradorTextoStore, props.monstrosTotais, props.checkbox);
+        this.monstrosStore = new MonstrosStore(this.geradorTextoStore, props.monstrosTotais, props.monstrosEtotais, props.checkbox);
         this.jogador = new Jogador(this.geradorTextoStore);
         this.calaboucoStarterStore = new CalaboucoStarterStore(this.geradorTextoStore, this.monstrosStore, this.jogador, props.fasesTotais);
         

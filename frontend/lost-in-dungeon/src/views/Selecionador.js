@@ -7,7 +7,7 @@ import Configuracoes from './Configuracoes';
 class Selecionador extends React.Component {
     constructor() {
         super();
-        this.state = { value: 'config', checkboxValor: true, fasesQtd: 0, monstrosQtd: 0 };
+        this.state = { value: 'config', checkboxValor: true, fasesQtd: 0, monstrosQtd: 0, monstroEQtd: 0 };
 
         this.handleChange = this.handleChange.bind(this);
         this.encerrarJogo = this.encerrarJogo.bind(this);
@@ -21,8 +21,8 @@ class Selecionador extends React.Component {
         this.setState({ value: 'config' });
     }
 
-    escolhaBotao = (faseSelecionadas, monstrosSelecionados) => {
-        this.setState({ fasesQtd: faseSelecionadas, monstrosQtd: monstrosSelecionados, value: 'jogo' });
+    escolhaBotao = (faseSelecionadas, monstrosSelecionados, monstrosESelecionados) => {
+        this.setState({ fasesQtd: faseSelecionadas, monstrosQtd: monstrosSelecionados, monstroEQtd: monstrosESelecionados, value: 'jogo' });
     }
 
     escolhaCheckbox = (valor) => {
@@ -32,7 +32,7 @@ class Selecionador extends React.Component {
     render() {
         const renderizao = {
             'config': <Configuracoes checkbox={this.escolhaCheckbox} clique={this.escolhaBotao}/>,
-            'jogo': <JogoPage fasesTotais={this.state.fasesQtd} monstrosTotais={this.state.monstrosQtd} checkbox={this.state.checkboxValor} encerrarJogo={this.encerrarJogo}/>
+            'jogo': <JogoPage fasesTotais={this.state.fasesQtd} monstrosTotais={this.state.monstrosQtd} monstrosEtotais={this.state.monstroEQtd} checkbox={this.state.checkboxValor} encerrarJogo={this.encerrarJogo}/>
         }
         return (
             <>
