@@ -5,7 +5,7 @@ export default function CustomImageList(props) {
     <img
         width={'100%'}
         height={'270vh'}
-        alt={'Jogador'}
+        alt={'Monstro'}
         src={props.src}
         loading="lazy"
     />

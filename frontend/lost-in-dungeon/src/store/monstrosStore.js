@@ -8,10 +8,12 @@ class MonstrosStore {
     monstrosCalabouco = [];
     monstro = new Monstro();
     monstroIndex = undefined;
+    especial = false;
 
-    constructor(geradorTextoStore, qtdMonstrosTotais) {
+    constructor(geradorTextoStore, qtdMonstrosTotais, especial) {
         this.geradorTextoStore = geradorTextoStore;
         this.qtdMonstrosTotais = qtdMonstrosTotais;
+        this.especial = especial;
     }
 
     _getRandomNumber(maxNum) {
@@ -74,7 +76,9 @@ class MonstrosStore {
         }
 
         if(!this.monstrosCalabouco.length) {
-            this._criarMonstro('ESPECIAL', 0);
+            if(this.especial) {
+                this._criarMonstro('ESPECIAL', 0);
+            }
             this.geradorTextoStore.semMonstros();
         }
     }
