@@ -31,42 +31,82 @@ const global = {
     items: [
         {
             descricao: 'Espada Longa',
-            descricaoChatGpt: 'Descreva uma espada longa como se fosse um mestre de RPG com no máximo 13 palavras',
             status: {
                 ataque: 10,
                 defesa: 5
             }
         },
         {
-            descricao: 'Espada Curta',
-            descricaoChatGpt: 'Descreva uma espada curta como se fosse um mestre de RPG com no máximo 13 palavras',
+            descricao: 'Adagas Duplas',
             status: {
                 ataque: 5,
-                esquiva: 5
+                esquiva: 10
             }
         },
         {
             descricao: 'Arco e Flecha',
-            descricaoChatGpt: 'Descreva um arco e flecha como se fosse um mestre de RPG com no máximo 13 palavras',
             status: {
-                ataque: 10
+                ataque: 10,
+                esquiva: 5
+            }
+        },
+        {
+            descricao: 'Cimitarra',
+            status: {
+                defesa: 5,
+                ataque: 10,
+                esquiva: 5,   
+            }
+        },
+        {
+            descricao: 'Katana',
+            status: {
+                ataque: 10,
+                esquiva: 10,   
+            }
+        },
+        {
+            descricao: 'Espada Grande',
+            status: {
+                ataque: 20,
+                esquiva: -5,
+            }
+        },
+        {
+            descricao: 'Zenith',
+            status: {
+                ataque: 20,
+                esquiva: 15,
+                defesa: 15
             }
         },
         {
             descricao: 'Escudo de Madeira',
-            descricaoChatGpt: 'Descreva um escudo de madeira como se fosse um mestre de RPG com no máximo 13 palavras',
-            status: {
-                ataque: 5,
-                defesa: 5
-            }
-        },
-        {
-            descricao: 'Armadura',
-            descricaoChatGpt: 'Descreva uma armadura como se fosse um mestre de RPG com no máximo 13 palavras',
             status: {
                 defesa: 10
             }
-        }
+        },
+        {
+            descricao: 'Cota de Malha',
+            status: {
+                defesa: 15
+            }
+        },
+        {
+            descricao: 'Armadura de Couro',
+            status: {
+                esquiva: 5,
+                defesa: 10
+            }
+        },
+        {
+            descricao: 'Botas',
+            status: {
+                defesa: 5,
+                esquiva: 10,
+            }
+        },
+        
     ],
 
     // Possíveis fases do jogo
@@ -83,6 +123,74 @@ const global = {
                 '1': {resultado: 'PERDER_VIDA', descricao: 'O baú morde seu braço!'},
                 '2': {resultado: 'GANHAR_ITEM', descricao: 'O baú se abre, você encontrou um item!'},
                 '3': {resultado: 'PERDER_VIDA', descricao: 'Ao se afastar o baú acorda e te morde!'},
+            }
+        },
+        {
+            descricao: "Sala com uma parede estranha",
+            descricaoChatGpt: "Descreva uma sala de uma dungeon, com um parede estranha (não parece que ela é real)" + padraoChatGpt,
+            escolhas: {
+                '1': 'Atacar a parede',
+                '2': 'Correr e atravessar a parede'
+            },
+            resultados: {
+                '1': {resultado: 'GANHAR_ITEM', descricao: "A parede se dissipa e você encherga um item misterioso."},
+                '2': {resultado: 'PERDER_VIDA', descricao: "Você bate com toda a força na parede e cai no chão."},
+            }
+        },
+        {
+            descricao: "Sala com Enigma dos Espelhos",
+            descricaoChatGpt: "Descreva uma sala de uma dungeon com vários espelhos, onde há um enigma a ser resolvido" + padraoChatGpt,
+            escolhas: {
+                '1': 'Alinhar os espelhos',
+                '2': 'Quebrar um espelho',
+                '3': 'Se olhar no espelho'
+            },
+            resultados: {
+                '1': {resultado: 'GANHAR_ITEM', descricao: "Ao alinhar corretamente os espelhos, um compartimento secreto se abre e você encontra um item valioso!"},
+                '2': {resultado: 'PERDER_VIDA', descricao: "Ao quebrar um espelho, todos os espelhos se quebram ao mesmo tempo e voam cacos de vidros em sua direção."},
+                '3': {resultado: 'GANHAR_VIDA', descricao: "Um sentimento gracioso percorre sua cabeça e magicamente você se sente melhor."}
+            }
+        },
+        {
+            descricao: "Corredor obscuro com barulhos estranhos",
+            descricaoChatGpt: "Descreva uma corredor obscuro de uma dungeon, com uma silhueta feminina com um canto chamativo" + padraoChatGpt,
+            escolhas: {
+                '1': 'Avançar sorrateiramente até a silhueta',
+                '2': 'Avançar rapidamente e atacar',
+            },
+            resultados: {
+                '1': {resultado: 'GANHAR_ITEM', descricao: "Você encontra uma estatua feminina com um item ao lado."},
+                '2': {resultado: 'ENCONTRO_MONSTRO', descricao: "O barulho do canto para e um grito ensurdecedor percorre o corredor, você deu de cara com um monstro!"},
+            }
+        },
+        {
+            descricao: "Sala com cristais coloridos",
+            descricaoChatGpt: "Descreva uma sala de uma dungeon repleta de cristais brilhantes e coloridos" + padraoChatGpt,
+            escolhas: {
+                '1': 'Tocar no cristal maior',
+                '2': 'Quebrar os cristais',
+                '3': 'Organizar os cristais por cor'
+            },
+            resultados: {
+                '1': {resultado: 'PERDER_VIDA', descricao: "Você sente sua energia vital sendo sugada pelo cristal."},
+                '2': {resultado: 'GANHAR_VIDA', descricao: "Você encherga várias áureas sendo atraídas para dentro de seu peito. Você se sente melhor."},
+                '3': {resultado: 'GANHAR_ITEM', descricao: "Os cristais emanam uma luz misteriosa. Você ouve um compartimento secreto sendo aberto e é agraciado com um item."},
+            }
+        },
+        {
+            descricao: "Corredor com silencioso",
+            descricaoChatGpt: "Descreva uma corredor silencioso de uma dungeon, com uma silhueta pequena parecendo uma criança" + padraoChatGpt,
+            escolhas: {
+                '1': 'Correr e ajudar a criança',
+                '2': 'Chamar a criança',
+                '3': 'Correr e atacar a silhueta misteriosa',
+                '4': 'Não fazer nada',
+            },
+            resultados: {
+                '1': {resultado: 'NADA', descricao: "Ao se aproximar, você enxerga uma criança fantasma, que ao lhe ver, se assusta voa rapidamente para longe."},
+                '2': {resultado: 'GANHAR_VIDA', descricao: "Você encherga uma pequeno fantasma vindo em sua direção, que o atravessa e some pelas suas costas. Estranhamente você se sente bem"},
+                '3': {resultado: 'ENCONTRO_MONSTRO', descricao: "Você aproxima e ataca, mas estranhamente sente que não acertou nada. Em seguinda, um barulho ensurdecedor vem em seu ouvido. Um monstro apareceu bem na sua frente."},
+                '4': {resultado: 'GANHAR_ITEM', descricao: "Após muito tempo, a silhueta se dissipa e você ouve um barulho de algo caindo no chão, chegando perto um item aparece diante de seus olhos."},
             }
         },
         { 
