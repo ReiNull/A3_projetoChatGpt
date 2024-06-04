@@ -77,6 +77,8 @@ class MonstrosStore {
 
     matarMonstro() {
         if(this.monstroIndex !== undefined) {
+            this.geradorTextoStore.gerarLog('VOCÊ MATOU ' + this.monstro.descricao.toUpperCase() + '!!!');
+
             this.monstrosCalabouco.splice(this.monstroIndex, 1);
             this.monstro = new Monstro();
             this.monstroIndex = undefined;

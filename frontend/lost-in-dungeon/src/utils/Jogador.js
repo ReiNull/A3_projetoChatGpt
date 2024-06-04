@@ -36,7 +36,6 @@ class Jogador {
     ganharItem() {
         const novoItem = this.item.carregarItemAleatorio();
 
-        //this.geradorTextoStore.descricaoPorChatgpt(novoItem.descricaoChatGpt);
         this.geradorTextoStore.gerarLog('Você adiciona ' + novoItem.descricao + ' ao seu inventário!');
         this.inventario.push(novoItem);
         this.atualizarStatus();        

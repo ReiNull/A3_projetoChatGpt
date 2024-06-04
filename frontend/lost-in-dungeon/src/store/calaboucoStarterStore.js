@@ -94,6 +94,8 @@ class CalaboucoStarterStore {
                 
                 this.monstrosStore.sumirMonstro();
                 this.jogador.encontrouMonstro = false;
+                this.jogador.atualizarStatus();
+                
                 this.avancarFase();
             } else {
                 this.geradorTextoStore.gerarLog('Você não conseguiu escapar do monstro: ' + monstro.descricao + '!!!');
@@ -173,11 +175,13 @@ class CalaboucoStarterStore {
                 this.geradorTextoStore.jogadorMorreu();
             }
         } else {
-            this.geradorTextoStore.gerarLog('VOCÊ MATOU ' + this.monstrosStore.monstro.descricao.toUpperCase() + '!!!');
-
             this.monstrosStore.matarMonstro();
+
+            this.geradorTextoStore.gerarLog('Como recompensa, você ganhará um ITEM!');
+            this.jogador.ganharItem();
             this.jogador.atualizarStatus();
             this.jogador.encontrouMonstro = false;
+            
             this.avancarFase();
         }
     }
