@@ -322,6 +322,24 @@ const global = {
                 { descricao: 'Matar', dano: 999, statusDebuff: null, descricaoChatGpt: 'Descreva um ceifador colhendo almas' + padraoChatGpt },
             ],
         },
+        { 
+            status: {
+                vida: 1,
+                ataque: 99,
+                defesa: 1,
+                esquiva: 99,
+            },
+            descricao: 'O Coelho' ,
+            caracteristicas: ['Com aura congelante'],
+            descricaoChatGpt: 'Me descreva um coelho :caracteristica' + padraoChatGpt,
+            src: Coelho,
+            acoesMonstro: [
+                { descricao: 'Chama Congelante', dano: 0, statusDebuff: { ataque: 5 }, descricaoChatGpt: 'Descreva um coelho congelando as minhas mãos' + padraoChatGpt },
+                { descricao: 'Chama Congelante', dano: 0, statusDebuff: { defesa: 5 }, descricaoChatGpt: 'Descreva um coelho congelando meu tronco' + padraoChatGpt },
+                { descricao: 'Chama Congelante', dano: 0, statusDebuff: { esquiva: 5 }, descricaoChatGpt: 'Descreva um coelho congelando meus pés' + padraoChatGpt },
+                { descricao: 'Salto', dano: 10, statusDebuff: null, descricaoChatGpt: 'Descreva um coelho saltando na minha cabeça' + padraoChatGpt },
+            ],
+        },
     ]
     
 }
