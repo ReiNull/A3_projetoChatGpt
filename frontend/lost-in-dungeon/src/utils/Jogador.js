@@ -44,9 +44,9 @@ class Jogador {
 
     lidarComConsequencia(consequencia) {
         if(consequencia.resultado === 'PERDER_VIDA') {
-            this.receberDano(1);
+            this.receberDano(4);
         } else if(consequencia.resultado === 'GANHAR_VIDA') {
-            this.ganharVida(1);
+            this.ganharVida(4);
         } else if(consequencia.resultado === 'ENCONTRO_MONSTRO') {
             this.encontrouMonstro = true;
         } else if(consequencia.resultado === 'GANHAR_ITEM'){
