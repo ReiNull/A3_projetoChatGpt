@@ -1,12 +1,12 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import PainelExibeTexto from '../../components/PainelExibeTexto';
-import PainelBotoes from '../../components/PainelBotoes';
-import GeradorTextoStore from '../../store/geradorTextoStore';
-import CalaboucoStarterStore from '../../store/calaboucoStarterStore';
-import MonstrosStore from '../../store/monstrosStore';
-import Jogador from '../../utils/Jogador';
-import '../../css/jogoPage.css';
+import PainelExibeTexto from '../components/PainelExibeTexto';
+import PainelBotoes from '../components/PainelBotoes';
+import GeradorTextoStore from '../store/geradorTextoStore';
+import CalaboucoStarterStore from '../store/calaboucoStarterStore';
+import MonstrosStore from '../store/monstrosStore';
+import Jogador from '../utils/Jogador';
+import '../css/jogoPage.css';
 
 class JogoPage extends React.Component {
     constructor(props) {

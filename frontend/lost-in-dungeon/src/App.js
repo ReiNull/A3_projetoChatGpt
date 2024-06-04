@@ -1,5 +1,5 @@
 import React from 'react';
-import Selecionador from './views/telaJogo/Selecionador';
+import Selecionador from './views/Selecionador';
 import './css/App.css';
 class App extends React.Component {
 

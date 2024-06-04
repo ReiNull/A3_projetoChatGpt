@@ -30,7 +30,7 @@ class CalaboucoStarterStore {
 
     _indexValido(index, indexMaximo) {
         let indexFinal = index;
-        if (index > indexMaximo || index < 0 || index == undefined) {
+        if (index > indexMaximo || index < 0 || index === undefined) {
             indexFinal = this._getRandomNumber(indexMaximo);
         }
 
@@ -51,7 +51,7 @@ class CalaboucoStarterStore {
         try {
             //Gera as fases do calabouço baseado na quantidade totais de fases informadas.
             for (let index = 0; index < this.qtdFasesTotais; index++) {
-                this._criarFase(1);
+                this._criarFase();
             }
 
             this.geradorTextoStore.gerouCalabouco();
@@ -63,7 +63,7 @@ class CalaboucoStarterStore {
 
     calculoCombateJogador(indexAcao) {
         const { monstro } = this.monstrosStore;
-        if (indexAcao == 1) {
+        if (indexAcao === 1) {
             if (monstro.status.esquiva < this._getRandomNumber(99) + 1) {
                 let ataqueMD = this.jogador.status.ataque - monstro.status.defesa;
                 if (ataqueMD > 0) {
@@ -77,23 +77,23 @@ class CalaboucoStarterStore {
             } else {
                 this.geradorTextoStore.gerarLog(monstro.descricao + ' se esquivou do seu ataque!!!');
             }
-        } else if (indexAcao == 2) {
+        } else if (indexAcao === 2) {
             const defesa = this.jogador.status.defesa > 0 ? this.jogador.status.defesa : global.jogador.status.defesa;
             let aumentarDefesa = Math.floor(defesa / (this._getRandomNumber(5) + 1));
             this.jogador.status.defesa += aumentarDefesa;
 
             this.geradorTextoStore.gerarLog('Sua defesa aumentou em ' + aumentarDefesa + ' pontos!!!');
-        } else if (indexAcao == 3) {
+        } else if (indexAcao === 3) {
             this.jogador.esquivou = true;
 
             this.geradorTextoStore.gerarLog('Você se prepara para esquivar!!!');
-        } else if (indexAcao == 4) {
+        } else if (indexAcao === 4) {
             let chanceFugir = Math.floor(((this.jogador.status.esquiva * 2) - (monstro.status.ataque / 2) + (this._getRandomNumber(10) + 1)));
             if (chanceFugir > this._getRandomNumber(99) + 1) {
                 this.geradorTextoStore.gerarLog('Você escapou do monstro: ' + monstro.descricao + '!!!');
                 
                 this.jogador.encontrouMonstro = false;
-                monstro = new Monstro();
+                this.monstrosStore.monstro = new Monstro();
                 this.avancarFase();
             } else {
                 this.geradorTextoStore.gerarLog('Você não conseguiu escapar do monstro: ' + monstro.descricao + '!!!');
@@ -196,7 +196,7 @@ class CalaboucoStarterStore {
                 if (this.jogador.encontrouMonstro && this.monstrosStore.existeMonstros) {
                     this.monstrosStore.chamarMonstro();
                     return;
-                } else if (consequencia == 'ENCONTRO_MONSTRO') {
+                } else if (consequencia === 'ENCONTRO_MONSTRO') {
                     this.jogador.encontrouMonstro = false;
                     this.geradorTextoStore.semMonstrosDefinitivo();
                 }
