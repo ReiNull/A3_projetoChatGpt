@@ -92,8 +92,8 @@ class CalaboucoStarterStore {
             if (chanceFugir > this._getRandomNumber(99) + 1) {
                 this.geradorTextoStore.gerarLog('Você escapou do monstro: ' + monstro.descricao + '!!!');
                 
+                this.monstrosStore.sumirMonstro();
                 this.jogador.encontrouMonstro = false;
-                this.monstrosStore.monstro = new Monstro();
                 this.avancarFase();
             } else {
                 this.geradorTextoStore.gerarLog('Você não conseguiu escapar do monstro: ' + monstro.descricao + '!!!');
@@ -154,10 +154,10 @@ class CalaboucoStarterStore {
     }
 
     combateComMonstro(indexAcao) {
-        const { monstro } = this.monstrosStore;
         this.calculoCombateJogador(indexAcao);
+        if(!this.monstrosStore.monstro.nasceu) return;
 
-        if (!monstro.monstroMorreu) {
+        if (!this.monstrosStore.monstro.monstroMorreu) {
             if(this.jogador.esquivouComSucesso) {
                 this.jogador.esquivouComSucesso = false;
                 this.geradorTextoStore.gerarLog('TURNO EXTRA!!!');
@@ -173,7 +173,7 @@ class CalaboucoStarterStore {
                 this.geradorTextoStore.jogadorMorreu();
             }
         } else {
-            this.geradorTextoStore.gerarLog('VOCÊ MATOU ' + monstro.descricao.toUpperCase() + '!!!');
+            this.geradorTextoStore.gerarLog('VOCÊ MATOU ' + this.monstrosStore.monstro.descricao.toUpperCase() + '!!!');
 
             this.monstrosStore.matarMonstro();
             this.jogador.atualizarStatus();

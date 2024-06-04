@@ -86,6 +86,13 @@ class MonstrosStore {
         }
     }
 
+    sumirMonstro() {
+        if(this.monstroIndex !== undefined) {
+            this.monstro = new Monstro();
+            this.monstroIndex = undefined;
+        }
+    }
+
     get existeMonstros() {
         return this.monstrosCalabouco.length;
     }
