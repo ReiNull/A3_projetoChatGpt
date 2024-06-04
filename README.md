@@ -35,3 +35,6 @@ Abrir novo terminal
 -cd lost-in-dungeon
 -npm install (Baixou projeto pela primeira vez)
 -npm start
+
+CHAVE .ENV CRIPTOGRAFADA
+jlSpRyWVQ2DT3AgqwVr8BSE6eim3vpLunNAWLHuG1mR9XOwJKu648CTpZw1UtofN9ZmHL32q0gAQskdDbBHK0ybbSqaGsj5ou8K7qOLaOpc
