@@ -22,7 +22,6 @@ export default function ControlledOpenSelect(props) {
   };
 
   const montarLista = () => {
-    console.log(props.lista)
     return props.lista.map(item => {
         let texto = item.descricao ? item.descricao : 'Vazio';
 
