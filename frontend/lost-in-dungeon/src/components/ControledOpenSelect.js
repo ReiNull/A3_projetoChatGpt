@@ -3,6 +3,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
+import Icone from './IconesStatus';
+import Bau from '../img/bau.png';
 
 export default function ControlledOpenSelect(props) {
   const [open, setOpen] = React.useState(false);
@@ -33,8 +35,16 @@ export default function ControlledOpenSelect(props) {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel key='youaremyspecial' sx={{ color: 'aqua'}} id="demo-controlled-open-select-label">Inventário</InputLabel>
+      <FormControl sx={{ width: 80 }}>
+        <InputLabel key='youaremyspecial' id="demo-controlled-open-select-label">
+          <img
+              width={'130%'}
+              height={'70vh'}
+              alt={'Baú'}
+              src={Bau}
+              loading="lazy"
+          />
+        </InputLabel>
         <Select
           open={open}
           onClose={handleClose}

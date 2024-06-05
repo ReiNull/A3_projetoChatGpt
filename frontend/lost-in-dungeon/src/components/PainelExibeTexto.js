@@ -54,11 +54,9 @@ export default function SimpleContainer(props) {
           <List>
             <ListItem>
               <ListItemText primary="STATUS" />
-            </ListItem>
-            <Divider component="li" />
-            <ListItem>
               <ControledOpenSelect lista={props.inventarioJogador}/>
             </ListItem>
+            <Divider component="li" />
             <ListItem>
               <Icone src={Vida} />
               <ListItemText primary={`Vida: ${props.statusJogador.status.vida}`}/>
