@@ -4,6 +4,8 @@ Erick Rodrigues Gomes - RA 822129827
 Thais Franco Dias     - RA 822123852 
 Victor Lima Pinheiro  - RA822163272
 
+Link para vídeo no youtube
+https://youtu.be/WRS2TsZDLOM
 
 Referências
 
@@ -21,7 +23,6 @@ https://mui.com/components/
 
 Imagens geradas a partir de I.A.:
 https://openart.ai/create
-
 
 Rodar o projeto
 Abrir novo terminal
