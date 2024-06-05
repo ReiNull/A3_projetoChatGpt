@@ -3,7 +3,6 @@ import GeradorTextoStore from './geradorTextoStore';
 import MonstrosStore from './monstrosStore';
 import Fase from '../utils/Fase';
 import Jogador from '../utils/Jogador';
-import Monstro from '../utils/Monstro';
 
 class CalaboucoStarterStore {
     qtdFasesTotais = 0;
