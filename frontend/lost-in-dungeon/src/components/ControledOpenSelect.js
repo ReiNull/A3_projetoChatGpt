@@ -2,12 +2,10 @@ import * as React from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import Button from '@mui/material/Button';
+import InputLabel from '@mui/material/InputLabel';
 
 export default function ControlledOpenSelect(props) {
-  const [age] = React.useState('');
   const [open, setOpen] = React.useState(false);
-
 
   const handleClose = () => {
     setOpen(false);
@@ -18,7 +16,7 @@ export default function ControlledOpenSelect(props) {
   };
 
   const montarLista = () => {
-    return props.lista.map(item => {
+    return props.lista.map((item) => {
         let texto = item.descricao ? item.descricao : 'Vazio';
 
         if(item.status) {
@@ -29,25 +27,18 @@ export default function ControlledOpenSelect(props) {
             if(item.status.esquiva)
                 texto += `|Esquiva: +${item.status.esquiva}|`;
         }
-        return <MenuItem value={10}>{texto}</MenuItem>;
+        return <MenuItem value=''>{texto}</MenuItem>;
     })
   };
 
   return (
     <div>
-      <Button sx={{ color: 'aqua'}} onClick={handleOpen}>
-        Abrir Inventário
-      </Button>
-      <FormControl>
-        {/* <InputLabel id="demo-controlled-open-select-label"></InputLabel> */}
+      <FormControl sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel key='youaremyspecial' sx={{ color: 'aqua'}} id="demo-controlled-open-select-label">Inventário</InputLabel>
         <Select
-          labelId="demo-controlled-open-select-label"
-          id="demo-controlled-open-select"
           open={open}
           onClose={handleClose}
-          value={age}
-          label="Age"
-          disabled
+          onOpen={handleOpen}
         >
           {montarLista()}
         </Select>

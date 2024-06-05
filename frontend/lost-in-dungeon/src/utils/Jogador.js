@@ -78,6 +78,10 @@ class Jogador {
             this.status.esquiva += esquivaBonus;
         });
     }
+
+    get getInventario() {
+        return this.inventario;
+    }
 }
 
 export default Jogador;
